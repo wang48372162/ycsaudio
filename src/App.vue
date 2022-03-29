@@ -1,8 +1,3 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "@/components/HelloWorld.vue";
-</script>
-
 <template>
   <header>
     <img
@@ -26,8 +21,13 @@ import HelloWorld from "@/components/HelloWorld.vue";
   <RouterView />
 </template>
 
+<script setup lang="ts">
+import { RouterLink, RouterView } from 'vue-router'
+import HelloWorld from '@/components/HelloWorld.vue'
+</script>
+
 <style>
-@import "@/assets/base.css";
+@import '@/assets/base.css';
 
 #app {
   max-width: 1280px;
