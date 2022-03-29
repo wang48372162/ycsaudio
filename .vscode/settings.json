@@ -3,5 +3,8 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "volar.icon.preview": false,
+  "volar.icon.splitEditors": false,
+  "volar.codeLens.references": false
 }

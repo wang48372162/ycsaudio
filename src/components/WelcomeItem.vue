@@ -12,6 +12,8 @@
   </div>
 </template>
 
+<script setup lang="ts"></script>
+
 <style scoped>
 .item {
   margin-top: 2rem;
