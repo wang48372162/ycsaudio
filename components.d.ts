@@ -4,14 +4,20 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
-    IconCommunity: typeof import('./src/components/IconCommunity.vue')['default']
-    IconDocumentation: typeof import('./src/components/IconDocumentation.vue')['default']
-    IconEcosystem: typeof import('./src/components/IconEcosystem.vue')['default']
-    IconSupport: typeof import('./src/components/IconSupport.vue')['default']
-    IconTooling: typeof import('./src/components/IconTooling.vue')['default']
-    TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
-    WelcomeItem: typeof import('./src/components/WelcomeItem.vue')['default']
+    Float: typeof import('headlessui-float-vue')['Float']
+    Layout: typeof import('./src/components/Layout.vue')['default']
+    Player: typeof import('./src/components/Player.vue')['default']
+    PlayerControlButton: typeof import('./src/components/PlayerControlButton.vue')['default']
+    PlayerControls: typeof import('./src/components/PlayerControls.vue')['default']
+    PlayerProgressBar: typeof import('./src/components/PlayerProgressBar.vue')['default']
+    PlayerTime: typeof import('./src/components/PlayerTime.vue')['default']
+    PlayerVolume: typeof import('./src/components/PlayerVolume.vue')['default']
+    Playlist: typeof import('./src/components/Playlist.vue')['default']
+    Popover: typeof import('@headlessui/vue')['Popover']
+    PopoverButton: typeof import('@headlessui/vue')['PopoverButton']
+    PopoverPanel: typeof import('@headlessui/vue')['PopoverPanel']
+    ProgressBar: typeof import('./src/components/ProgressBar.vue')['default']
+    Search: typeof import('./src/components/Search.vue')['default']
   }
 }
 

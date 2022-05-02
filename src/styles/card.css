@@ -1,0 +1,5 @@
+@layer components {
+  .card {
+    @apply relative overflow-hidden rounded-lg shadow;
+  }
+}

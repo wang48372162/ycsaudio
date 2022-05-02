@@ -1,0 +1,11 @@
+#nprogress .bar {
+  @apply h-[3px] bg-gray-700 !important;
+}
+
+#nprogress .peg {
+  @apply shadow !important;
+}
+
+#nprogress .spinner {
+  @apply hidden !important;
+}
