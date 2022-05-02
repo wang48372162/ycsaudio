@@ -1,6 +1,6 @@
-# ycsaudio
+# ycsAudio
 
-This template should help get you started developing with Vue 3 in Vite.
+我的線上音樂播放器，Vue 3 in Vite
 
 ## Recommended IDE Setup
 
