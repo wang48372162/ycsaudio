@@ -204,8 +204,10 @@ onMounted(() => {
   audioRef.value.addEventListener('canplay', () => {
     emit('loaded')
   })
-  audioRef.value.addEventListener('play', () => {
+  audioRef.value.addEventListener('play', function () {
     played.value = true
+    this.volume = volume.value / 100
+    this.muted = muted.value
   })
   audioRef.value.addEventListener('pause', () => {
     played.value = false
@@ -231,7 +233,7 @@ onMounted(() => {
   if (props.autoplay) {
     audioRef.value
       .play()
-      .then(() => {})
+      .then()
       .catch(e => {
         if (import.meta.env.DEV) console.error(e)
         played.value = false
