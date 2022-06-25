@@ -4,7 +4,7 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
-    Float: typeof import('headlessui-float-vue')['Float']
+    Float: typeof import('@headlessui-float/vue')['Float']
     Layout: typeof import('./src/components/Layout.vue')['default']
     Player: typeof import('./src/components/Player.vue')['default']
     PlayerControlButton: typeof import('./src/components/PlayerControlButton.vue')['default']
@@ -13,9 +13,6 @@ declare module 'vue' {
     PlayerTime: typeof import('./src/components/PlayerTime.vue')['default']
     PlayerVolume: typeof import('./src/components/PlayerVolume.vue')['default']
     Playlist: typeof import('./src/components/Playlist.vue')['default']
-    Popover: typeof import('@headlessui/vue')['Popover']
-    PopoverButton: typeof import('@headlessui/vue')['PopoverButton']
-    PopoverPanel: typeof import('@headlessui/vue')['PopoverPanel']
     ProgressBar: typeof import('./src/components/ProgressBar.vue')['default']
     Search: typeof import('./src/components/Search.vue')['default']
   }

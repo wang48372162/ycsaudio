@@ -7,7 +7,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import Pages from 'vite-plugin-pages'
-import { HeadlessUiFloatResolver } from 'headlessui-float-vue'
+import { HeadlessUiFloatResolver } from '@headlessui-float/vue'
 import Yaml from '@rollup/plugin-yaml'
 
 export default defineConfig({

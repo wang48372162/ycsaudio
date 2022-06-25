@@ -144,6 +144,14 @@
   dependencies:
     "@hapi/hoek" "^9.0.0"
 
+"@headlessui-float/vue@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@headlessui-float/vue/-/vue-0.6.0.tgz#7ad8012505548757c02166d64898377320aaad80"
+  integrity sha512-P/fkLHSXR++83V4gyVMOdBvBex1tBNmzji3IMvbR0c7oZugB54WiQKk45+mF7ykhDwhxjn8iOO2Q4CMgVNbrlQ==
+  dependencies:
+    "@floating-ui/core" "^0.6.2"
+    "@floating-ui/dom" "^0.4.5"
+
 "@headlessui/vue@^1.5.0":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@headlessui/vue/-/vue-1.5.0.tgz#8cd4877d3d344e482073a04ae8e3b7f987bb267c"
@@ -2603,14 +2611,6 @@ has@^1.0.3:
   integrity sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==
   dependencies:
     function-bind "^1.1.1"
-
-headlessui-float-vue@^0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/headlessui-float-vue/-/headlessui-float-vue-0.5.1.tgz#5b66e15cacb48296b26ded0e29b058132a59a416"
-  integrity sha512-eDqfhiQHltRk2SmP2Sy8rpF8lvyynHO41dkMbeYle+2tVugg3ktJGjIYO8NRY4T6UPmH/98iG7GlpK+KJoE/YQ==
-  dependencies:
-    "@floating-ui/core" "^0.6.2"
-    "@floating-ui/dom" "^0.4.5"
 
 html-encoding-sniffer@^3.0.0:
   version "3.0.0"
