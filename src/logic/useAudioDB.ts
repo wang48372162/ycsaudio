@@ -12,13 +12,11 @@ export interface RawList {
   audios: string | number[]
 }
 
-export interface List {
-  id: string
-  name: string
+export interface List extends RawList {
   audios: number[]
 }
 
-function formatAudio(audio: Audio): Audio {
+function formatAudio(audio: Audio) {
   if (!/^https?:\/\//.test(audio.url)) {
     audio.url = [
       import.meta.env.VITE_AUDIO_BASE_URL.replace(/\/+$/, ''),
@@ -28,17 +26,17 @@ function formatAudio(audio: Audio): Audio {
   return audio
 }
 
-export function getAudio(id: number): Audio | null {
+export function getAudio(id: number) {
   const audio = audioDB.audios.find(v => v.id === Number(id))
   return audio ? formatAudio(audio) : null
 }
 
-export function getAudios(): Audio[] {
+export function getAudios() {
   return audioDB.audios.map(formatAudio)
 }
 
-export function getList(id: string | null): List | undefined {
-  const list = audioDB.lists.find(v => v.id === id) as List | RawList
+export function getList(id: string | null) {
+  const list = audioDB.lists.find(v => v.id === id)
   if (!list) return
 
   if (typeof list.audios === 'string') {
@@ -49,14 +47,14 @@ export function getList(id: string | null): List | undefined {
   return list as List
 }
 
-export function getLists(): List[] {
-  return audioDB.lists.map(list => getList(list.id) as List)
+export function getLists() {
+  return audioDB.lists.map(list => getList(list.id)!)
 }
 
 export function listContainAudio(
   listId: string | null,
   audioId: number
-): boolean {
+) {
   const list = getList(listId)
   if (!list) return false
   return !!list.audios.find(id => id === Number(audioId))
@@ -65,7 +63,7 @@ export function listContainAudio(
 export function getAudioIndexFromList(
   listId: string | null,
   audioId: number
-): number | undefined {
+) {
   const list = getList(listId)
   if (!list) return
   return list.audios.findIndex(id => id === Number(audioId))

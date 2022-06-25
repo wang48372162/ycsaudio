@@ -11,6 +11,11 @@ import { HeadlessUiFloatResolver } from '@headlessui-float/vue'
 import Yaml from '@rollup/plugin-yaml'
 
 export default defineConfig({
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
   plugins: [
     Vue(),
     Components({
@@ -34,9 +39,15 @@ export default defineConfig({
     Pages(),
     Yaml(),
   ],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-    },
+  optimizeDeps: {
+    include: [
+      'vue',
+      'vue-router',
+      'nprogress',
+      'nouislider',
+      '@vueuse/core',
+      '@headlessui/vue',
+      '@headlessui-float/vue',
+    ],
   },
 })
