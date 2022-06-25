@@ -119,7 +119,6 @@
 
 <script setup lang="ts">
 import { onKeyDown } from '@vueuse/core'
-import { getAudios, getList, getLists, listContainAudio } from '@/logic/useAudioDB'
 
 const route = useRoute()
 const router = useRouter()

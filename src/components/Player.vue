@@ -39,7 +39,6 @@
 
 <script setup lang="ts">
 import { promiseTimeout } from '@vueuse/core'
-import { getAudioIndexFromList, getList } from '@/logic/useAudioDB'
 import { Repeat } from '@/state'
 
 const props = withDefaults(

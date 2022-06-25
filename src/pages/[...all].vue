@@ -22,7 +22,5 @@
 </template>
 
 <script setup lang="ts">
-import { useTitle } from '@/logic/useTitle'
-
 useTitle('頁面不存在！')
 </script>

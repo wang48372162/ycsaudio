@@ -8,11 +8,7 @@
 
 <script setup lang="ts">
 import { type RouteLocationNormalized, onBeforeRouteUpdate } from 'vue-router'
-import { useAudio } from '@/logic/useAudio'
-import { usePlaylist } from '@/logic/useList'
-import { useTitle } from '@/logic/useTitle'
-import { disableLoadedPageDone, loadEnd, loadStart } from '@/logic/nprogress'
-import { scrollToTop } from '@/logic/scrollToTop'
+import { loadEnd, loadStart } from '@/logic/nprogress'
 
 const route = useRoute()
 const router = useRouter()

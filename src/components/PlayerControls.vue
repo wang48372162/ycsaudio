@@ -47,7 +47,6 @@
 
 <script setup lang="ts">
 import { onBeforeRouteUpdate } from 'vue-router'
-import { getAudio } from '@/logic/useAudioDB'
 import { Repeat } from '@/state'
 
 const props = withDefaults(

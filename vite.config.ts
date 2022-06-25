@@ -29,7 +29,12 @@ export default defineConfig({
       dts: true,
     }),
     AutoImport({
-      imports: ['vue', 'vue-router', '@vueuse/core'],
+      dirs: ['src/composables', 'src/logic'],
+      imports: [
+        'vue',
+        'vue-router',
+        '@vueuse/core',
+      ],
       dts: true,
       eslintrc: { enabled: true },
     }),

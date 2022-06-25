@@ -1,20 +1,5 @@
 import audioDB from '@/../data/audioDB.yml'
-
-export interface Audio {
-  id: number
-  url: string
-  title: string
-}
-
-export interface RawList {
-  id: string
-  name: string
-  audios: string | number[]
-}
-
-export interface List extends RawList {
-  audios: number[]
-}
+import type { Audio, List } from '@/types'
 
 function formatAudio(audio: Audio) {
   if (!/^https?:\/\//.test(audio.url)) {
@@ -57,7 +42,8 @@ export function listContainAudio(
 ) {
   const list = getList(listId)
   if (!list) return false
-  return !!list.audios.find(id => id === Number(audioId))
+
+  return list.audios.includes(Number(audioId))
 }
 
 export function getAudioIndexFromList(
@@ -66,5 +52,6 @@ export function getAudioIndexFromList(
 ) {
   const list = getList(listId)
   if (!list) return
+
   return list.audios.findIndex(id => id === Number(audioId))
 }

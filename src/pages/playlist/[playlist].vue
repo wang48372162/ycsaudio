@@ -6,9 +6,6 @@
 
 <script setup lang="ts">
 import { type RouteLocationNormalized, onBeforeRouteUpdate } from 'vue-router'
-import { usePlaylist } from '@/logic/useList'
-import { useTitle } from '@/logic/useTitle'
-import { scrollToTop } from '@/logic/scrollToTop'
 
 const route = useRoute()
 const router = useRouter()
