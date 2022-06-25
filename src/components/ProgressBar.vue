@@ -17,31 +17,10 @@ let slider: Slider
 const sliderRef = ref<HTMLElement>(null!)
 const is_drag = ref(false)
 
-watch(() => props.value, value => {
-  if (!is_drag.value) {
-    slider.set(value > 0 ? value : 0)
-  }
-})
-
-function listenTouchEvents() {
-  useEventListener(sliderRef.value.querySelector('.noUi-handle'), 'mousedown', () => {
-    is_drag.value = true
-    useEventListener(document, 'mouseup', () => {
-      is_drag.value = false
-    }, { once: true })
-  })
-
-  useEventListener(sliderRef.value.querySelector('.noUi-handle'), 'touchstart', () => {
-    is_drag.value = true
-    useEventListener(document, 'touchend', () => {
-      is_drag.value = false
-    }, { once: true })
-  })
-}
-
-onMounted(() => {
+function mountSlider() {
   slider = noUiSlider.create(sliderRef.value, {
     start: props.value,
+    behaviour: 'snap',
     connect: [true, false],
     range: {
       min: 0,
@@ -52,24 +31,57 @@ onMounted(() => {
 
   slider.on('change', (values, handle) => {
     if (!props.total) return
-    emit('change', parseFloat(values[0] as string))
+    emit('change', parseFloat(`${values[0]}`))
   })
 
   slider.on('update', (values, handle) => {
     if (!props.total) return
-    emit('update', parseFloat(values[0] as string))
+    emit('update', parseFloat(`${values[0]}`))
   })
 
   listenTouchEvents()
-})
+}
 
-onBeforeUnmount(() => {
+function unmountSlider() {
   slider.destroy()
   slider = undefined!
+}
+
+function listenTouchEvents() {
+  const eventMap = {
+    '.noUi-base': [
+      ['mousedown', 'mouseup'],
+    ],
+    '.noUi-handle': [
+      ['mousedown', 'mouseup'],
+      ['touchstart', 'touchend'],
+    ],
+  } as Record<string, [string, string][]>
+
+  for (const el of Object.keys(eventMap)) {
+    for (const [startEvent, endEvent] of eventMap[el]) {
+      useEventListener(sliderRef.value.querySelector(el), startEvent, () => {
+        is_drag.value = true
+        useEventListener(document, endEvent, () => {
+          is_drag.value = false
+        }, { once: true })
+      })
+    }
+  }
+}
+
+watch(() => props.value, value => {
+  // 拖曳時不更新時間
+  if (!is_drag.value) {
+    slider.set(value > 0 ? value : 0)
+  }
 })
+
+onMounted(mountSlider)
+onBeforeUnmount(unmountSlider)
 </script>
 
-<style lang="postcss" scoped>
+<style scoped>
 .noUi-target {
   @apply h-7 rounded-none border-none bg-transparent shadow-none;
   @apply before:absolute before:inset-0 before:my-3 before:block before:bg-gray-300;
@@ -91,6 +103,7 @@ onBeforeUnmount(() => {
   @apply top-[6px] -right-2 h-4 w-4 cursor-pointer rounded-full border-none bg-black shadow-none;
   @apply before:hidden after:hidden;
 }
+
 :deep(.noUi-touch-area) {
   @apply absolute -top-1 -bottom-1 -left-1 -right-1 h-auto w-auto;
 }
