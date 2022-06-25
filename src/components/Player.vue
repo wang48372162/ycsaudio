@@ -3,7 +3,9 @@
     <div class="p-5">
       <audio ref="audioRef">HTML5 Audio not supported</audio>
 
-      <h1 class="truncate text-2xl font-semibold">{{ title }}</h1>
+      <h1 class="truncate text-2xl font-semibold">
+        {{ title }}
+      </h1>
 
       <PlayerControls
         class="my-8"
@@ -37,10 +39,8 @@
 
 <script setup lang="ts">
 import { promiseTimeout } from '@vueuse/core'
-import { getList, getAudioIndexFromList } from '@/logic/useAudioDB'
+import { getAudioIndexFromList, getList } from '@/logic/useAudioDB'
 import { Repeat } from '@/state'
-
-const emit = defineEmits(['before-load', 'loaded-dom', 'loaded', 'error'])
 
 const props = withDefaults(
   defineProps<{
@@ -55,6 +55,8 @@ const props = withDefaults(
     listId: '',
   }
 )
+
+const emit = defineEmits(['beforeLoad', 'loadedDom', 'loaded', 'error'])
 
 const router = useRouter()
 
@@ -108,13 +110,13 @@ const nextId = computed(() => {
 })
 
 function loadAudio() {
-  emit('before-load')
+  emit('beforeLoad')
 
   // Audio src
   audioRef.value.src = props.src
   error.value = false
 
-  emit('loaded-dom', audioRef.value)
+  emit('loadedDom', audioRef.value)
 }
 
 function clickPlay() {
@@ -200,19 +202,19 @@ onMounted(() => {
   audioRef.value.addEventListener('loadedmetadata', function () {
     duration.value = this.duration
   })
-  audioRef.value.addEventListener('canplay', function () {
+  audioRef.value.addEventListener('canplay', () => {
     emit('loaded')
   })
-  audioRef.value.addEventListener('play', function () {
+  audioRef.value.addEventListener('play', () => {
     played.value = true
   })
-  audioRef.value.addEventListener('pause', function () {
+  audioRef.value.addEventListener('pause', () => {
     played.value = false
   })
-  audioRef.value.addEventListener('ended', function () {
+  audioRef.value.addEventListener('ended', () => {
     repeatAudio()
   })
-  audioRef.value.addEventListener('error', function () {
+  audioRef.value.addEventListener('error', () => {
     error.value = true
     emit('error')
     emit('loaded')

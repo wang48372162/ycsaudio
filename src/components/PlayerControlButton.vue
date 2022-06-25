@@ -42,7 +42,7 @@ const classes = computed(() => [
   props.disabled
     ? 'text-gray-300 cursor-default !opacity-90'
     : props.lighten
-    ? 'text-gray-400'
-    : 'text-gray-700',
+      ? 'text-gray-400'
+      : 'text-gray-700',
 ])
 </script>

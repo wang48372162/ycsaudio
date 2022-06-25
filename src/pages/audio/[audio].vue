@@ -7,11 +7,11 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeRouteUpdate, type RouteLocationNormalized } from 'vue-router'
+import { type RouteLocationNormalized, onBeforeRouteUpdate } from 'vue-router'
 import { useAudio } from '@/logic/useAudio'
 import { usePlaylist } from '@/logic/useList'
 import { useTitle } from '@/logic/useTitle'
-import { loadStart, loadEnd, disableLoadedPageDone } from '@/logic/nprogress'
+import { disableLoadedPageDone, loadEnd, loadStart } from '@/logic/nprogress'
 import { scrollToTop } from '@/logic/scrollToTop'
 
 const route = useRoute()

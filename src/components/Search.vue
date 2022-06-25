@@ -22,17 +22,19 @@
       </button>
 
       <div class="popover-panel bg-white p-4 sm:w-[288px] sm:shadow">
-        <h2 class="mb-5 text-center text-2xl font-bold">搜尋</h2>
+        <h2 class="mb-5 text-center text-2xl font-bold">
+          搜尋
+        </h2>
         <input
-          class="search-input w-full rounded-sm border border-gray-600 px-2 py-1 focus:outline-none focus:ring-1 focus:ring-gray-600"
           ref="searchRef"
+          v-model="search"
+          class="search-input w-full rounded-sm border border-gray-600 px-2 py-1 focus:outline-none focus:ring-1 focus:ring-gray-600"
           type="text"
           placeholder="搜尋..."
-          v-model="search"
           @keydown.prevent.down="searchKeydown"
           @keydown.prevent.up="searchKeyup"
           @keydown.enter="searchEnter"
-        />
+        >
 
         <button
           type="button"
@@ -54,7 +56,9 @@
           class="-mx-4 mt-4 -mb-4 max-h-[400px] overflow-y-auto"
         >
           <template v-if="result.audios.length">
-            <h3 class="px-4 pb-2 text-xl font-bold">歌曲：</h3>
+            <h3 class="px-4 pb-2 text-xl font-bold">
+              歌曲：
+            </h3>
             <ul class="mb-2">
               <li
                 v-for="(audio, i) in result.audios"
@@ -83,7 +87,9 @@
           </template>
 
           <template v-if="result.lists.length">
-            <h3 class="px-4 pb-2 text-xl font-bold">播放清單：</h3>
+            <h3 class="px-4 pb-2 text-xl font-bold">
+              播放清單：
+            </h3>
             <ul class="mb-2">
               <li
                 v-for="(list, i) in result.lists"
@@ -112,8 +118,8 @@
 </template>
 
 <script setup lang="ts">
-import { getAudios, getList, getLists, listContainAudio } from '@/logic/useAudioDB'
 import { onKeyDown } from '@vueuse/core'
+import { getAudios, getList, getLists, listContainAudio } from '@/logic/useAudioDB'
 
 const route = useRoute()
 const router = useRouter()
@@ -149,9 +155,9 @@ const resultEmpty = computed(() => {
 
 const selectAudioIndex = computed(() => {
   if (
-    !result.value ||
-    selectIndex.value === null ||
-    selectIndex.value >= result.value.audios.length
+    !result.value
+    || selectIndex.value === null
+    || selectIndex.value >= result.value.audios.length
   ) {
     return null
   }
@@ -215,7 +221,7 @@ const selectLinkRoute = computed(() => {
 })
 
 function searchText(key: string, text: string) {
-  return text.toLowerCase().indexOf(key.toLowerCase()) !== -1
+  return text.toLowerCase().includes(key.toLowerCase())
 }
 
 function selectScrollIntoView() {
@@ -230,7 +236,7 @@ function audioListTo(audioId: number) {
   return listContainAudio(queryListId.value, audioId) ? queryListId.value : null
 }
 
-function audioTo(id: number, withList: boolean = false) {
+function audioTo(id: number, withList = false) {
   const list = audioListTo(id)
   return {
     name: 'audio-audio',

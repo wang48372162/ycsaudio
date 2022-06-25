@@ -1,4 +1,7 @@
 {
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
   "volar.icon.preview": false,
   "volar.icon.splitEditors": false,
   "volar.codeLens.references": false

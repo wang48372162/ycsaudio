@@ -50,8 +50,6 @@ import { onBeforeRouteUpdate } from 'vue-router'
 import { getAudio } from '@/logic/useAudioDB'
 import { Repeat } from '@/state'
 
-const emit = defineEmits(['play', 'stop', 'update-repeat'])
-
 const props = withDefaults(
   defineProps<{
     played: boolean
@@ -68,6 +66,8 @@ const props = withDefaults(
     error: false,
   }
 )
+
+const emit = defineEmits(['play', 'stop', 'updateRepeat'])
 
 function useRepeat(initialValue = Repeat.None) {
   const repeatStatus = ref(initialValue)
@@ -99,7 +99,7 @@ function useRepeat(initialValue = Repeat.None) {
   })
 
   watch(repeatStatus, status => {
-    emit('update-repeat', status)
+    emit('updateRepeat', status)
   })
 
   initialRepeatValue()
@@ -134,11 +134,9 @@ const path = reactive({
   stopBtn: 'M 10,8 41,8 41,41 10,41 z',
 
   repeatBtn: computed(() => {
-    const repeatStatusPath =
-      'M 48,20 38,30 28,20 35,20 35,14 16,14 16,35 35,35 35,31 41,31 41,41 10,41 10,8 41,8 41,20 z M 25,25 25,25 25,25 25,25 25,25 z'
+    const repeatStatusPath = 'M 48,20 38,30 28,20 35,20 35,14 16,14 16,35 35,35 35,31 41,31 41,41 10,41 10,8 41,8 41,20 z M 25,25 25,25 25,25 25,25 25,25 z'
 
-    const repeatStatusOnePath =
-      'M 48,20 38,30 28,20 35,20 35,14 16,14 16,35 35,35 35,31 41,31 41,41 10,41 10,8 41,8 41,20 z M 27,16 19,24 23,24 23,33 27,33 z'
+    const repeatStatusOnePath = 'M 48,20 38,30 28,20 35,20 35,14 16,14 16,35 35,35 35,31 41,31 41,41 10,41 10,8 41,8 41,20 z M 27,16 19,24 23,24 23,33 27,33 z'
 
     if (repeatStatus.value === Repeat.None || repeatStatus.value === Repeat.All) {
       return repeatStatusPath

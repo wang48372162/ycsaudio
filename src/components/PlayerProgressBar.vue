@@ -3,8 +3,6 @@
 </template>
 
 <script setup lang="ts">
-const emit = defineEmits(['change'])
-
 const props = withDefaults(
   defineProps<{
     currentTime: number
@@ -13,6 +11,8 @@ const props = withDefaults(
   }>(),
   { step: 5 }
 )
+
+const emit = defineEmits(['change'])
 
 const total = 3600
 

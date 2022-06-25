@@ -19,15 +19,15 @@
 </template>
 
 <script setup lang="ts">
-import { getAudio, type Audio } from '@/logic/useAudioDB'
-
-const route = useRoute()
+import { type Audio, getAudio } from '@/logic/useAudioDB'
 
 const props = defineProps<{
   id: string
   title: string
   audios: number[]
 }>()
+
+const route = useRoute()
 
 const listTitleTo = computed(() => ({
   name: 'playlist-playlist',

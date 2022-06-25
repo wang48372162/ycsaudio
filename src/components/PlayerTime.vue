@@ -1,5 +1,7 @@
 <template>
-  <div class="select-none">{{ currentTimeText }} / {{ durationText }}</div>
+  <div class="select-none">
+    {{ currentTimeText }} / {{ durationText }}
+  </div>
 </template>
 
 <script setup lang="ts">

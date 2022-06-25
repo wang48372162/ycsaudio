@@ -2,8 +2,8 @@
   <div class="flex items-center" :title="tooltipText">
     <button
       class="mr-2 inline-block h-6 w-6 opacity-90 transition duration-200 sm:hover:opacity-100"
-      @click="mute"
       title="靜音 (M)"
+      @click="mute"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -24,8 +24,6 @@
 </template>
 
 <script setup lang="ts">
-const emit = defineEmits(['change', 'muted'])
-
 const props = withDefaults(
   defineProps<{
     volume: number
@@ -38,6 +36,8 @@ const props = withDefaults(
     step: 5,
   }
 )
+
+const emit = defineEmits(['change', 'muted'])
 
 const total = 100
 

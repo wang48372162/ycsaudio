@@ -1,17 +1,17 @@
 <template>
-  <div ref="sliderRef"></div>
+  <div ref="sliderRef" />
 </template>
 
 <script setup lang="ts">
 import noUiSlider, { type API as Slider } from 'nouislider'
 import 'nouislider/dist/nouislider.min.css'
 
-const emit = defineEmits(['change', 'update'])
-
 const props = defineProps<{
   value: number
   total: number
 }>()
+
+const emit = defineEmits(['change', 'update'])
 
 let slider: Slider
 const sliderRef = ref<HTMLElement>(null!)
