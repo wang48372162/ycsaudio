@@ -189,6 +189,7 @@
     "usePreferredColorScheme": true,
     "usePreferredDark": true,
     "usePreferredLanguages": true,
+    "useProgressbar": true,
     "useRafFn": true,
     "useRefHistory": true,
     "useResizeObserver": true,

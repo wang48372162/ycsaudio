@@ -2,32 +2,32 @@
   <div class="flex items-center justify-center">
     <PlayerControlButton
       v-if="listId"
+      v-tippy="`上一首 (${title.btnPrev})`"
       type="link"
       :to="audioTo(prevId)"
-      :title="title.btnPrev"
       :svg-path="path.prevBtn"
       :disabled="error || !prevId"
     />
 
     <PlayerControlButton
+      v-tippy="btnText[path.playMode]"
       type="button"
-      :title="btnText[path.playMode]"
       :svg-path="path.playBtn"
       :disabled="error"
       @click="play"
     />
 
     <PlayerControlButton
+      v-tippy="btnText.stop"
       type="button"
-      :title="btnText.stop"
       :svg-path="path.stopBtn"
       :disabled="error"
       @click="stop"
     />
 
     <PlayerControlButton
+      v-tippy="btnText.repeatMode[repeatStatus]"
       type="button"
-      :title="btnText.repeatMode[repeatStatus]"
       :svg-path="path.repeatBtn"
       :lighten="repeatStatus !== Repeat.All && repeatStatus !== Repeat.Single"
       :disabled="error"
@@ -36,9 +36,9 @@
 
     <PlayerControlButton
       v-if="listId"
+      v-tippy="`下一首 (${title.btnNext})`"
       type="link"
       :to="audioTo(nextId)"
-      :title="title.btnNext"
       :svg-path="path.nextBtn"
       :disabled="error || !nextId"
     />
@@ -49,22 +49,19 @@
 import { onBeforeRouteUpdate } from 'vue-router'
 import { Repeat } from '@/state'
 
-const props = withDefaults(
-  defineProps<{
-    played: boolean
-    repeatStatus: Repeat
-    listId: string
-    prevId?: number
-    nextId?: number
-    error: boolean
-  }>(),
-  {
-    played: false,
-    repeatStatus: Repeat.None,
-    listId: '',
-    error: false,
-  }
-)
+const props = withDefaults(defineProps<{
+  played: boolean
+  repeatStatus: Repeat
+  listId: string
+  prevId?: number
+  nextId?: number
+  error: boolean
+}>(), {
+  played: false,
+  repeatStatus: Repeat.None,
+  listId: '',
+  error: false,
+})
 
 const emit = defineEmits(['play', 'stop', 'updateRepeat'])
 

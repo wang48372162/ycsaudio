@@ -48,6 +48,7 @@ export default defineConfig({
     include: [
       'vue',
       'vue-router',
+      'vue-tippy',
       'nprogress',
       'nouislider',
       '@vueuse/core',

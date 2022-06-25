@@ -1,8 +1,8 @@
 <template>
-  <div class="flex items-center" :title="tooltipText">
+  <div class="flex items-center">
     <button
+      v-tippy="'靜音 (M)'"
       class="mr-2 inline-block h-6 w-6 opacity-90 transition duration-200 sm:hover:opacity-100"
-      title="靜音 (M)"
       @click="mute"
     >
       <svg
@@ -17,25 +17,27 @@
       </svg>
     </button>
 
-    <div class="w-[50px]">
-      <ProgressBar :value="volume" :total="total" @update="changeVolume" />
+    <div v-tippy="`音量：${volume}%`" class="w-[50px]">
+      <ProgressBar
+        name="volume"
+        :value="volume"
+        :total="total"
+        @update="updateVolume"
+      />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const props = withDefaults(
-  defineProps<{
-    volume: number
-    muted: boolean
-    step?: number
-  }>(),
-  {
-    volume: 100,
-    muted: false,
-    step: 5,
-  }
-)
+const props = withDefaults(defineProps<{
+  volume: number
+  muted: boolean
+  step?: number
+}>(), {
+  volume: 100,
+  muted: false,
+  step: 10,
+})
 
 const emit = defineEmits(['change', 'muted'])
 
@@ -52,26 +54,19 @@ const volumeIconPath = computed(() => {
   return 'M7 9v6h4l5 5V4l-5 5H7z'
 })
 
-const tooltipText = computed(() => {
-  if (props.muted) {
-    return '靜音 (M)'
-  }
-  return `音量：${props.volume}%`
-})
-
 function volumeUp() {
-  changeVolume(props.volume + props.step)
+  updateVolume(props.volume + props.step)
 }
 
 function volumeDown() {
-  changeVolume(props.volume - props.step)
+  updateVolume(props.volume - props.step)
 }
 
 function mute() {
   changeMuted(!props.muted)
 }
 
-function changeVolume(value: number) {
+function updateVolume(value: number) {
   if (value < 0) {
     value = 0
   } else if (value > total) {

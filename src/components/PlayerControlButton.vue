@@ -19,20 +19,17 @@
 </template>
 
 <script setup lang="ts">
-const props = withDefaults(
-  defineProps<{
-    type: 'link' | 'button'
-    svgPath: string
-    title?: string
-    to?: object
-    lighten?: boolean
-    disabled?: boolean
-  }>(),
-  {
-    lighten: false,
-    disabled: false,
-  }
-)
+const props = withDefaults(defineProps<{
+  type: 'link' | 'button'
+  svgPath: string
+  title?: string
+  to?: object
+  lighten?: boolean
+  disabled?: boolean
+}>(), {
+  lighten: false,
+  disabled: false,
+})
 
 const tag = computed(() =>
   props.type === 'button' ? 'button' : props.type === 'link' && props.to ? 'RouterLink' : 'div'

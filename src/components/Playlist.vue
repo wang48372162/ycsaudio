@@ -1,10 +1,10 @@
 <template>
   <div class="card">
-    <RouterLink :to="listTitleTo" class="block py-3 px-5 text-xl">
+    <RouterLink :to="listTitleTo" class="block text-xl py-3 px-5 hover:bg-gray-50">
       {{ title }}
     </RouterLink>
 
-    <ul class="divide-y divide-gray-200">
+    <ul class="border-t border-gray-200 divide-y divide-gray-200">
       <li v-for="audio in audioList" :key="audio.id">
         <RouterLink
           :to="audioTo(audio.id)"

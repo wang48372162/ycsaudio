@@ -32,6 +32,7 @@
         :duration="duration"
         :error="error"
         @change="changeProgress"
+        @change-realtime="changeDurationText"
       />
     </div>
   </div>
@@ -41,19 +42,16 @@
 import { promiseTimeout } from '@vueuse/core'
 import { Repeat } from '@/state'
 
-const props = withDefaults(
-  defineProps<{
-    id: number
-    src: string
-    title: string
-    autoplay?: boolean
-    listId?: string
-  }>(),
-  {
-    autoplay: true,
-    listId: '',
-  }
-)
+const props = withDefaults(defineProps<{
+  id: number
+  src: string
+  title: string
+  autoplay?: boolean
+  listId?: string
+}>(), {
+  autoplay: true,
+  listId: '',
+})
 
 const emit = defineEmits(['beforeLoad', 'loadedDom', 'loaded', 'error'])
 
@@ -68,7 +66,9 @@ const currentTime = ref(0)
 const volume = useLocalStorage('ycsaudio-volume', 100)
 const muted = useLocalStorage('ycsaudio-muted', false)
 
-const audioIndex = computed(() => (props.id ? getAudioIndexFromList(props.listId, props.id) : null))
+const { isDrag: isDragProgressbar } = useProgressbar('player')
+
+const audioIndex = computed(() => props.id ? getAudioIndexFromList(props.listId, props.id) : null)
 
 const listAudios = computed(() => getList(props.listId)?.audios)
 
@@ -172,6 +172,12 @@ function changeProgress(newCurrentTime: number) {
   }
 }
 
+function changeDurationText(newCurrentTime: number) {
+  if (isDragProgressbar.value) {
+    currentTime.value = newCurrentTime
+  }
+}
+
 function changeVolume(newVolume: number) {
   volume.value = newVolume
   if (audioRef.value) {
@@ -223,7 +229,9 @@ onMounted(() => {
   })
   audioRef.value.addEventListener('timeupdate', function () {
     duration.value = this.duration
-    currentTime.value = this.currentTime
+    if (!isDragProgressbar.value) {
+      currentTime.value = this.currentTime
+    }
   })
   audioRef.value.addEventListener('volumechange', function () {
     volume.value = Math.floor(this.volume * 100)

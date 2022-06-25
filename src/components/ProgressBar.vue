@@ -7,6 +7,7 @@ import noUiSlider, { type API as Slider } from 'nouislider'
 import 'nouislider/dist/nouislider.min.css'
 
 const props = defineProps<{
+  name: string
   value: number
   total: number
 }>()
@@ -15,7 +16,7 @@ const emit = defineEmits(['change', 'update'])
 
 let slider: Slider
 const sliderRef = ref<HTMLElement>(null!)
-const is_drag = ref(false)
+const { isDrag, setDrag } = useProgressbar(props.name)
 
 function mountSlider() {
   slider = noUiSlider.create(sliderRef.value, {
@@ -27,6 +28,7 @@ function mountSlider() {
       max: Math.floor(props.total),
     },
     animationDuration: 0,
+    keyboardSupport: false,
   })
 
   slider.on('change', (values, handle) => {
@@ -61,9 +63,9 @@ function listenTouchEvents() {
   for (const el of Object.keys(eventMap)) {
     for (const [startEvent, endEvent] of eventMap[el]) {
       useEventListener(sliderRef.value.querySelector(el), startEvent, () => {
-        is_drag.value = true
+        setDrag(true)
         useEventListener(document, endEvent, () => {
-          is_drag.value = false
+          setDrag(false)
         }, { once: true })
       })
     }
@@ -72,7 +74,7 @@ function listenTouchEvents() {
 
 watch(() => props.value, value => {
   // 拖曳時不更新時間
-  if (!is_drag.value) {
+  if (!isDrag.value) {
     slider.set(value > 0 ? value : 0)
   }
 })
@@ -83,7 +85,7 @@ onBeforeUnmount(unmountSlider)
 
 <style scoped>
 .noUi-target {
-  @apply h-7 rounded-none border-none bg-transparent shadow-none;
+  @apply h-7 bg-transparent border-none rounded-none shadow-none cursor-pointer;
   @apply before:absolute before:inset-0 before:my-3 before:block before:bg-gray-300;
 }
 
