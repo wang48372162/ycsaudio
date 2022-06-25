@@ -17,7 +17,6 @@ let slider: Slider
 const sliderRef = ref<HTMLElement>(null!)
 const is_drag = ref(false)
 
-// prettier-ignore
 watch(() => props.value, value => {
   if (!is_drag.value) {
     slider.set(value > 0 ? value : 0)
@@ -25,7 +24,6 @@ watch(() => props.value, value => {
 })
 
 function listenTouchEvents() {
-  // prettier-ignore
   useEventListener(sliderRef.value.querySelector('.noUi-handle'), 'mousedown', () => {
     is_drag.value = true
     useEventListener(document, 'mouseup', () => {
@@ -33,7 +31,6 @@ function listenTouchEvents() {
     }, { once: true })
   })
 
-  // prettier-ignore
   useEventListener(sliderRef.value.querySelector('.noUi-handle'), 'touchstart', () => {
     is_drag.value = true
     useEventListener(document, 'touchend', () => {

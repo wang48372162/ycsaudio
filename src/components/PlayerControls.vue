@@ -94,7 +94,6 @@ function useRepeat(initialValue = Repeat.None) {
     }
   }
 
-  // prettier-ignore
   watch(() => props.repeatStatus, status => {
     repeatStatus.value = status
   })
