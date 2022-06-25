@@ -250,4 +250,6 @@ onMounted(() => {
 })
 
 watch(() => props.src, loadAudio)
+
+defineExpose({ audioRef, error })
 </script>

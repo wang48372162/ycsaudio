@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <RouterLink :to="listTitleTo" class="block text-xl py-3 px-5 hover:bg-gray-50">
+    <RouterLink :to="listTitleTo" class="block text-xl py-3 px-5 hover:bg-gray-50" data-test="list-title">
       {{ title }}
     </RouterLink>
 
@@ -49,4 +49,6 @@ function audioTo(audioId: number) {
     query: { list: props.id },
   }
 }
+
+defineExpose({ audioList })
 </script>

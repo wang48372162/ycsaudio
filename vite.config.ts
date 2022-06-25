@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { URL, fileURLToPath } from 'url'
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
@@ -9,6 +10,7 @@ import IconsResolver from 'unplugin-icons/resolver'
 import Pages from 'vite-plugin-pages'
 import { HeadlessUiFloatResolver } from '@headlessui-float/vue'
 import Yaml from '@rollup/plugin-yaml'
+import RemoveElTestAttrPlugin from './src/plugins/remove-el-test-attr'
 
 export default defineConfig({
   resolve: {
@@ -43,7 +45,11 @@ export default defineConfig({
     }),
     Pages(),
     Yaml(),
+    RemoveElTestAttrPlugin(),
   ],
+  test: {
+    globals: true,
+  },
   optimizeDeps: {
     include: [
       'vue',

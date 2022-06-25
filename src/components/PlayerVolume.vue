@@ -3,6 +3,7 @@
     <button
       v-tippy="'靜音 (M)'"
       class="mr-2 inline-block h-6 w-6 opacity-90 transition duration-200 sm:hover:opacity-100"
+      data-test="volume-muted"
       @click="mute"
     >
       <svg
@@ -30,8 +31,8 @@
 
 <script setup lang="ts">
 const props = withDefaults(defineProps<{
-  volume: number
-  muted: boolean
+  volume?: number
+  muted?: boolean
   step?: number
 }>(), {
   volume: 100,

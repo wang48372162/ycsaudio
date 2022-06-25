@@ -11,7 +11,7 @@ function formatAudio(audio: Audio) {
   return audio
 }
 
-export function getAudio(id: number) {
+export function getAudio(id: number | string) {
   const audio = audioDB.audios.find(v => v.id === Number(id))
   return audio ? formatAudio(audio) : null
 }

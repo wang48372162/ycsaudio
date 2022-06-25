@@ -7,6 +7,7 @@
       :to="audioTo(prevId)"
       :svg-path="path.prevBtn"
       :disabled="error || !prevId"
+      data-test="button-prev"
     />
 
     <PlayerControlButton
@@ -14,6 +15,7 @@
       type="button"
       :svg-path="path.playBtn"
       :disabled="error"
+      data-test="button-play"
       @click="play"
     />
 
@@ -22,6 +24,7 @@
       type="button"
       :svg-path="path.stopBtn"
       :disabled="error"
+      data-test="button-stop"
       @click="stop"
     />
 
@@ -31,6 +34,7 @@
       :svg-path="path.repeatBtn"
       :lighten="repeatStatus !== Repeat.All && repeatStatus !== Repeat.Single"
       :disabled="error"
+      data-test="button-repeat"
       @click="repeat"
     />
 
@@ -41,6 +45,7 @@
       :to="audioTo(nextId)"
       :svg-path="path.nextBtn"
       :disabled="error || !nextId"
+      data-test="button-next"
     />
   </div>
 </template>
@@ -50,12 +55,12 @@ import { onBeforeRouteUpdate } from 'vue-router'
 import { Repeat } from '@/state'
 
 const props = withDefaults(defineProps<{
-  played: boolean
-  repeatStatus: Repeat
-  listId: string
+  played?: boolean
+  repeatStatus?: Repeat
+  listId?: string
   prevId?: number
   nextId?: number
-  error: boolean
+  error?: boolean
 }>(), {
   played: false,
   repeatStatus: Repeat.None,
@@ -184,4 +189,6 @@ const { Space, S, R } = useMagicKeys({
 whenever(Space, play)
 whenever(S, stop)
 whenever(R, repeat)
+
+defineExpose({ repeatStatus })
 </script>

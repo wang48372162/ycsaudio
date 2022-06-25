@@ -21,7 +21,7 @@
         </svg>
       </button>
 
-      <div class="popover-panel bg-white p-4 sm:w-[288px] sm:shadow">
+      <div class="pfixed inset-0 bg-white p-4 sm:static sm:inset-auto sm:w-[288px] sm:shadow">
         <h2 class="mb-5 text-center text-2xl font-bold">
           搜尋
         </h2>
@@ -319,11 +319,3 @@ onKeyDown('Enter', e => {
   }
 })
 </script>
-
-<style scoped>
-@media (max-width: 639.9999px) {
-  .popover-panel {
-    @apply fixed inset-0 !important;
-  }
-}
-</style>
