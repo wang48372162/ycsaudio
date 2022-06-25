@@ -1,4 +1,4 @@
-import audioDB from '@/../audioDB.yml'
+import audioDB from '@/../data/audioDB.yml'
 
 export interface Audio {
   id: number
