@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Audio } from '@/composables/useAudio'
+import type { Audio } from '@/types'
 
 const props = defineProps<{
   id: string

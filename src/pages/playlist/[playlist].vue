@@ -18,7 +18,7 @@ function visit(route: RouteLocationNormalized) {
     router.push('/404')
   }
 
-  useTitle(list.title)
+  usePageTitle(list.title)
   scrollToTop()
 }
 

@@ -180,6 +180,7 @@
     "useOffsetPagination": true,
     "useOnline": true,
     "usePageLeave": true,
+    "usePageTitle": true,
     "useParallax": true,
     "usePermission": true,
     "usePlaylist": true,

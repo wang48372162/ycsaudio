@@ -22,5 +22,5 @@
 </template>
 
 <script setup lang="ts">
-useTitle('頁面不存在！')
+usePageTitle('頁面不存在！')
 </script>

@@ -24,7 +24,7 @@ function visit(route: RouteLocationNormalized) {
 
   if (!audio.id) router.push('/404')
 
-  useTitle(audio.title)
+  usePageTitle(audio.title)
   scrollToTop()
 }
 
