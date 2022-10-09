@@ -7,6 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    Float: typeof import('@headlessui-float/vue')['Float']
     Layout: typeof import('./../components/Layout.vue')['default']
     Player: typeof import('./../components/Player.vue')['default']
     PlayerControlButton: typeof import('./../components/PlayerControlButton.vue')['default']

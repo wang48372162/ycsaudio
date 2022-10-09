@@ -79,8 +79,4 @@ export default defineConfig({
     script: 'async',
     formatting: 'minify',
   },
-
-  ssr: {
-    noExternal: ['@headlessui-float/vue'],
-  },
 })
