@@ -44,6 +44,6 @@ function changeRealtimeProgress(value: number) {
 
 const { ArrowLeft, ArrowRight } = useMagicKeys()
 
-whenever(ArrowLeft, backward)
-whenever(ArrowRight, forward)
+wheneverOnSearchBoxClosed(ArrowLeft, backward)
+wheneverOnSearchBoxClosed(ArrowRight, forward)
 </script>

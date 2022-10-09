@@ -90,7 +90,7 @@ const { ArrowUp, ArrowDown, M } = useMagicKeys({
   },
 })
 
-whenever(ArrowUp, volumeUp)
-whenever(ArrowDown, volumeDown)
-whenever(M, mute)
+wheneverOnSearchBoxClosed(ArrowUp, volumeUp)
+wheneverOnSearchBoxClosed(ArrowDown, volumeDown)
+wheneverOnSearchBoxClosed(M, mute)
 </script>

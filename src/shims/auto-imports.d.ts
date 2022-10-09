@@ -248,4 +248,5 @@ declare global {
   const watchThrottled: typeof import('@vueuse/core')['watchThrottled']
   const watchWithFilter: typeof import('@vueuse/core')['watchWithFilter']
   const whenever: typeof import('@vueuse/core')['whenever']
+  const wheneverOnSearchBoxClosed: typeof import('../logic/keyboard')['wheneverOnSearchBoxClosed']
 }

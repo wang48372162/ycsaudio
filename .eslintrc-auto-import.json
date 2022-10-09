@@ -246,6 +246,7 @@
     "watchSyncEffect": true,
     "watchThrottled": true,
     "watchWithFilter": true,
-    "whenever": true
+    "whenever": true,
+    "wheneverOnSearchBoxClosed": true
   }
 }

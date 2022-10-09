@@ -1,11 +1,11 @@
 <template>
   <div class="relative ml-3 inline-block">
-    <Float as="template" :show="show" placement="bottom-end" :offset="8" :transform="false">
+    <Float :show="showSearchBox" placement="bottom-end" :offset="8" :transform="false">
       <button
         type="button"
         class="absolute bottom-0 left-0 p-1"
         title="搜尋 (Enter)"
-        @click="show = !show"
+        @click="showSearchBox = true"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@
         </svg>
       </button>
 
-      <div class="fixed inset-0 bg-white p-4 sm:static sm:inset-auto sm:w-[288px] sm:shadow">
+      <div ref="searchBoxRef" class="fixed inset-0 bg-white p-4 sm:static sm:inset-auto sm:w-[288px] sm:shadow">
         <h2 class="mb-5 text-center text-2xl font-bold">
           搜尋
         </h2>
@@ -40,7 +40,7 @@
           type="button"
           class="absolute top-4 right-4 sm:hidden"
           title="關閉 (Escape)"
-          @click="show = false"
+          @click="showSearchBox = false"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
             <path
@@ -120,15 +120,16 @@
 <script setup lang="ts">
 import type { Ref } from 'vue'
 import { onKeyDown } from '@vueuse/core'
+import { showSearchBox } from '@/state'
 
 const route = useRoute()
 const router = useRouter()
 
-const show = ref(false)
 const search = ref('')
 const selectIndex = ref<number | null>(null)
 
 const searchRef = ref(null!) as Ref<HTMLElement>
+const searchBoxRef = ref(null!) as Ref<HTMLElement>
 const searchResultAudiosRefs = ref([]) as Ref<HTMLElement[]>
 const searchResultListsRefs = ref([]) as Ref<HTMLElement[]>
 
@@ -248,7 +249,7 @@ function listTo(listId: string) {
 }
 
 function onClickLink() {
-  show.value = false
+  showSearchBox.value = false
   search.value = ''
   selectIndex.value = null
 }
@@ -288,9 +289,13 @@ function searchKeyup() {
   selectScrollIntoView()
 }
 
-watch(show, show => {
-  if (show) nextTick(() => searchRef.value?.focus())
+onClickOutside(searchBoxRef, () => {
+  showSearchBox.value = false
 })
+
+whenever(showSearchBox, () => {
+  searchRef.value?.focus()
+}, { flush: 'post' })
 
 watch(search, search => {
   if (search === '' || search === null || !result.value) {
@@ -306,12 +311,12 @@ onBeforeUpdate(() => {
 })
 
 onKeyDown('Escape', () => {
-  show.value = false
+  showSearchBox.value = false
 })
 
 onKeyDown('Enter', e => {
   if (!(e.target as Element).matches('.search-input')) {
-    show.value = true
+    showSearchBox.value = true
   }
 })
 </script>

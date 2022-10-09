@@ -177,18 +177,11 @@ function audioTo(id: number | undefined) {
   }
 }
 
-const { Space, S, R } = useMagicKeys({
-  passive: false,
-  onEventFired(e) {
-    if (e.key === ' ') {
-      e.preventDefault()
-    }
-  },
-})
+const { Space, S, R } = useMagicKeys()
 
-whenever(Space, play)
-whenever(S, stop)
-whenever(R, repeat)
+wheneverOnSearchBoxClosed(Space, play)
+wheneverOnSearchBoxClosed(S, stop)
+wheneverOnSearchBoxClosed(R, repeat)
 
 defineExpose({ repeatStatus })
 </script>
