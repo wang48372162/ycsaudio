@@ -149,54 +149,49 @@ const resultEmpty = computed(() => {
   if (!result.value) {
     return true
   }
+
   return !result.value.audios.length && !result.value.lists.length
 })
 
 const selectAudioIndex = computed(() => {
-  if (
-    !result.value
-    || selectIndex.value === null
-    || selectIndex.value >= result.value.audios.length
-  ) {
-    return null
-  }
+  if (!result.value) return null
+  if (selectIndex.value === null) return null
+  if (selectIndex.value >= result.value.audios.length) return null
+
   return selectIndex.value
 })
 
 const selectAudio = computed(() => {
-  if (!result.value || selectAudioIndex.value === null) {
-    return null
-  }
+  if (!result.value) return null
+  if (selectAudioIndex.value === null) return null
+
   return result.value.audios[selectAudioIndex.value]
 })
 
 const selectAudioEl = computed(() => {
-  if (selectAudioIndex.value === null) {
-    return null
-  }
+  if (selectAudioIndex.value === null) return null
+
   return searchResultAudiosRefs.value[selectAudioIndex.value]
 })
 
 const selectListIndex = computed(() => {
-  if (!result.value || selectIndex.value === null) {
-    return null
-  } else if (selectIndex.value < result.value.audios.length) {
-    return null
-  }
+  if (!result.value) return null
+  if (selectIndex.value === null) return null
+  if (selectIndex.value < result.value.audios.length) return null
+
   return selectIndex.value - result.value.audios.length
 })
 
 const selectList = computed(() => {
-  if (!result.value || selectListIndex.value === null) {
-    return null
-  }
+  if (!result.value) return null
+  if (selectListIndex.value === null) return null
+
   return result.value.lists[selectListIndex.value]
 })
 
 const selectListEl = computed(() => {
-  if (selectListIndex.value === null) {
-    return null
-  }
+  if (selectListIndex.value === null) return null
+
   return searchResultListsRefs.value[selectListIndex.value]
 })
 

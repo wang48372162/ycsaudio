@@ -655,10 +655,10 @@
   dependencies:
     vue-demi "*"
 
-"@ycs77/eslint-config-basic@0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@ycs77/eslint-config-basic/-/eslint-config-basic-0.1.1.tgz#342865bc235affeb6a9923658114e6c743512672"
-  integrity sha512-+iy5s4665iJuGkKKv0FekCwPrEUXgic84fCDdT7HO3xAhEGkBEkgeTKVRUfvbwBvyQ5P+s90lmhnKIYT3n/Mdw==
+"@ycs77/eslint-config-basic@0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@ycs77/eslint-config-basic/-/eslint-config-basic-0.1.3.tgz#efc0004e7205c66197d4a32ef1171a681150db49"
+  integrity sha512-WWKUCNtyWCbFk/c95bw5gN7fhC6VcxQj86W9y5pj0HmXTBJh88UBOiLqewcU+m6CyxroA2lZXsD0YGcGnyXSgg==
   dependencies:
     eslint-plugin-eslint-comments "^3.2.0"
     eslint-plugin-html "^6.2.0"
@@ -672,40 +672,40 @@
     jsonc-eslint-parser "^2.1.0"
     yaml-eslint-parser "^1.0.1"
 
-"@ycs77/eslint-config-react@0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@ycs77/eslint-config-react/-/eslint-config-react-0.1.1.tgz#a865ff4c93a1039c67698964807f5108e0e6acf5"
-  integrity sha512-wd7b2TWZjBqMzLa+D2jIgTw0dK8v8eTKmQzHRMS+/kr7s9MTJEztAIXyF36EyuAWg3VFVQcm9H2cWS7/OmqwVA==
+"@ycs77/eslint-config-react@0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@ycs77/eslint-config-react/-/eslint-config-react-0.1.3.tgz#01f84c1de0b4847bcc080e7782b2252a4acb10f3"
+  integrity sha512-yxaOuxzIgSDzX+EOLsqXG2dxBKG5S8NSdyAudud6wx67Cktq5+y/hgEU9DSBLXFB1cElA6pHBPtH/1HeFpI6/g==
   dependencies:
-    "@ycs77/eslint-config-ts" "0.1.1"
+    "@ycs77/eslint-config-ts" "0.1.3"
     eslint-plugin-react "^7.30.0"
 
-"@ycs77/eslint-config-ts@0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@ycs77/eslint-config-ts/-/eslint-config-ts-0.1.1.tgz#1794c5c4c8b063cd35edb8c3bb1b14cfe7ab47e0"
-  integrity sha512-NeJfSXJjGwk6zsW39BDqgc9In4Pf8a2UnZkf2a6hw3ZF6Fnt1praNFvS44NsFy031W2wWYx8mA2iSR0RCQWtgw==
+"@ycs77/eslint-config-ts@0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@ycs77/eslint-config-ts/-/eslint-config-ts-0.1.3.tgz#10742990b5b9837858c66ee4dab7bd54e783567a"
+  integrity sha512-Q7AQANwxjpPHFADHNuodceOxK462T4shX5D0TB9aKomQ+8m8NAr+neWXhOgyBjgiSTibIT1sYPIogF5hvMJFUw==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^5.26.0"
     "@typescript-eslint/parser" "^5.26.0"
-    "@ycs77/eslint-config-basic" "0.1.1"
+    "@ycs77/eslint-config-basic" "0.1.3"
 
-"@ycs77/eslint-config-vue@0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@ycs77/eslint-config-vue/-/eslint-config-vue-0.1.1.tgz#3c3e2319997f5959d8af93210272043d5de7a4c0"
-  integrity sha512-BWsZgSiuKkSNPshJfvnc/+VFAGOHtCdQF80r+CutefTiTyv9paxaKBROLAlqhPNmi5pRAeNjSp51//QMV7tbRg==
+"@ycs77/eslint-config-vue@0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@ycs77/eslint-config-vue/-/eslint-config-vue-0.1.3.tgz#fc7d4d26b50ac97ba6be48519c696a52a6f2f540"
+  integrity sha512-F7pyR7kpbMMWAd2sVdlJL1q0mlhh/wgVGG7J4oXC5DoP0yNkIRJ+mJHSFhvNOzcMnnv8KB6dtPt/LphyakLEFQ==
   dependencies:
-    "@ycs77/eslint-config-ts" "0.1.1"
+    "@ycs77/eslint-config-ts" "0.1.3"
     eslint-plugin-vue "^9.0.1"
 
-"@ycs77/eslint-config@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@ycs77/eslint-config/-/eslint-config-0.1.1.tgz#281b52a1589857124d2b78a430d9cb26016499c2"
-  integrity sha512-bBUdvnZSkNszrLvWS12N/5TiUwTs9Ts0dslXHU6H6pX7XK0WrW6zXTkd5qAiaGSBal6mA4ePfz+N2pXmcVKiDw==
+"@ycs77/eslint-config@^0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@ycs77/eslint-config/-/eslint-config-0.1.3.tgz#f92e07d2fbd82e79b6ac762c4f4d64965bd99296"
+  integrity sha512-qZ1IrGgdDKi1PHInldgsh+b58aJa9AO4vLxsFzmiEgZKkXvrqHmIl51vJN4wLJ+Jbsz0OPHEuilCjFxZF9KyOQ==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^5.26.0"
     "@typescript-eslint/parser" "^5.26.0"
-    "@ycs77/eslint-config-react" "0.1.1"
-    "@ycs77/eslint-config-vue" "0.1.1"
+    "@ycs77/eslint-config-react" "0.1.3"
+    "@ycs77/eslint-config-vue" "0.1.3"
     eslint-plugin-eslint-comments "^3.2.0"
     eslint-plugin-html "^6.2.0"
     eslint-plugin-import "^2.26.0"
