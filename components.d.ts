@@ -4,6 +4,7 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    Float: typeof import('@headlessui-float/vue')['Float']
     Layout: typeof import('./src/components/Layout.vue')['default']
     Player: typeof import('./src/components/Player.vue')['default']
     PlayerControlButton: typeof import('./src/components/PlayerControlButton.vue')['default']
