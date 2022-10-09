@@ -13,11 +13,13 @@ import RemoveElTestAttrPlugin from './src/plugins/remove-el-test-attr'
 
 export default defineConfig({
   base: process.env.NODE_ENV === 'production' ? '/ycsaudio/' : '/',
+
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
+
   plugins: [
     Vue(),
     Components({
@@ -28,7 +30,6 @@ export default defineConfig({
         HeadlessUiResolver(),
         HeadlessUiFloatResolver(),
       ],
-      dts: true,
     }),
     AutoImport({
       dirs: ['src/composables', 'src/logic'],
@@ -37,7 +38,6 @@ export default defineConfig({
         'vue-router',
         '@vueuse/core',
       ],
-      dts: true,
       eslintrc: { enabled: true },
     }),
     Icons({
@@ -47,9 +47,11 @@ export default defineConfig({
     Yaml(),
     RemoveElTestAttrPlugin(),
   ],
+
   test: {
     globals: true,
   },
+
   optimizeDeps: {
     include: [
       'vue',
