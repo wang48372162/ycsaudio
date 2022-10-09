@@ -13,3 +13,7 @@
     </div>
   </Layout>
 </template>
+
+<script setup lang="ts">
+usePageTitle('ycsAudio', { titleTemplate: '' })
+</script>

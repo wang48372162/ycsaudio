@@ -1,9 +1,9 @@
 {
   "extends": "@vue/tsconfig/tsconfig.web.json",
   "include": [
-    "*.d.ts",
     "src/**/*",
-    "src/**/*.vue"
+    "src/**/*.vue",
+    "src/shims/*.d.ts"
   ],
   "compilerOptions": {
     "composite": true,

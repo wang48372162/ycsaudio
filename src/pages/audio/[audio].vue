@@ -1,6 +1,11 @@
 <template>
   <Layout>
-    <Player v-bind="audio" :list-id="list.id" @before-load="loadStart" @loaded="loadEnd" />
+    <Player
+      v-bind="audio"
+      :list-id="list.id"
+      @before-load="loadStart"
+      @loaded="loadEnd"
+    />
 
     <Playlist v-if="list.id" class="mt-6" v-bind="list" />
   </Layout>
@@ -11,26 +16,23 @@ import { type RouteLocationNormalized, onBeforeRouteUpdate } from 'vue-router'
 import { loadEnd, loadStart } from '@/logic/nprogress'
 
 const route = useRoute()
-const router = useRouter()
 
 const { audio, fetchAudioData } = useAudio()
 const { list, fetchListData } = usePlaylist()
 
-function visit(route: RouteLocationNormalized) {
+function visit(route: RouteLocationNormalized, isUpdate = false) {
   disableLoadedPageDone(route)
 
   fetchAudioData(route.params.audio as string)
   fetchListData(route.query.list as string)
 
-  if (!audio.id) router.push('/404')
-
-  usePageTitle(audio.title)
+  usePageTitle(audio.title, { isUpdate })
   scrollToTop()
 }
 
 visit(route)
 
 onBeforeRouteUpdate((to, from) => {
-  visit(to)
+  visit(to, true)
 })
 </script>

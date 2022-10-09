@@ -1,9 +1,9 @@
 {
   "extends": "./tsconfig.app.json",
   "include": [
-    "*.d.ts",
     "src/**/*",
     "src/**/*.vue",
+    "src/shims/*.d.ts",
     "tests/**/*"
   ],
   "compilerOptions": {

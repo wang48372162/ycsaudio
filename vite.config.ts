@@ -1,5 +1,6 @@
 import { URL, fileURLToPath } from 'url'
 import { defineConfig } from 'vite'
+import { noopDirectiveTransform } from '@vue/compiler-dom'
 import Vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
 import { HeadlessUiResolver } from 'unplugin-vue-components/resolvers'
@@ -12,8 +13,6 @@ import Yaml from '@rollup/plugin-yaml'
 import RemoveElTestAttrPlugin from './src/plugins/remove-el-test-attr'
 
 export default defineConfig({
-  base: process.env.NODE_ENV === 'production' ? '/ycsaudio/' : '/',
-
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
@@ -21,7 +20,15 @@ export default defineConfig({
   },
 
   plugins: [
-    Vue(),
+    Vue({
+      template: {
+        compilerOptions: {
+          directiveTransforms: {
+            tippy: noopDirectiveTransform,
+          },
+        },
+      },
+    }),
     Components({
       resolvers: [
         IconsResolver({
@@ -30,6 +37,7 @@ export default defineConfig({
         HeadlessUiResolver(),
         HeadlessUiFloatResolver(),
       ],
+      dts: 'src/shims/components.d.ts',
     }),
     AutoImport({
       dirs: ['src/composables', 'src/logic'],
@@ -38,6 +46,7 @@ export default defineConfig({
         'vue-router',
         '@vueuse/core',
       ],
+      dts: 'src/shims/auto-imports.d.ts',
       eslintrc: { enabled: true },
     }),
     Icons({
@@ -47,10 +56,6 @@ export default defineConfig({
     Yaml(),
     RemoveElTestAttrPlugin(),
   ],
-
-  test: {
-    globals: true,
-  },
 
   optimizeDeps: {
     include: [
@@ -63,5 +68,19 @@ export default defineConfig({
       '@headlessui/vue',
       '@headlessui-float/vue',
     ],
+  },
+
+  test: {
+    globals: true,
+    environment: 'jsdom',
+  },
+
+  ssgOptions: {
+    script: 'async',
+    formatting: 'minify',
+  },
+
+  ssr: {
+    noExternal: ['@headlessui-float/vue'],
   },
 })

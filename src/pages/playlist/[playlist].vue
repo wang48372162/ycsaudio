@@ -8,23 +8,18 @@
 import { type RouteLocationNormalized, onBeforeRouteUpdate } from 'vue-router'
 
 const route = useRoute()
-const router = useRouter()
 const { list, fetchListData } = usePlaylist()
 
-function visit(route: RouteLocationNormalized) {
+function visit(route: RouteLocationNormalized, isUpdate = false) {
   fetchListData(route.params.playlist as string)
 
-  if (!list.id) {
-    router.push('/404')
-  }
-
-  usePageTitle(list.title)
+  usePageTitle(list.title, { isUpdate })
   scrollToTop()
 }
 
 visit(route)
 
 onBeforeRouteUpdate((to, from) => {
-  visit(to)
+  visit(to, true)
 })
 </script>

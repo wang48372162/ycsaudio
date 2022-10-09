@@ -11,8 +11,8 @@ interface ImportMeta {
 
 declare module '*/audioDB.yml' {
   const audioDB: {
-    audios: import('./src/types').Audio[]
-    lists: import('./src/types').RawList[]
+    audios: import('@/types').Audio[]
+    lists: import('@/types').RawList[]
   }
   export default audioDB
 }
