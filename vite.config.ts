@@ -1,4 +1,3 @@
-/// <reference types="vitest" />
 import { URL, fileURLToPath } from 'url'
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
@@ -13,6 +12,7 @@ import Yaml from '@rollup/plugin-yaml'
 import RemoveElTestAttrPlugin from './src/plugins/remove-el-test-attr'
 
 export default defineConfig({
+  base: process.env.NODE_ENV === 'production' ? '/ycsaudio/' : '/',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
