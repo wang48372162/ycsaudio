@@ -21,7 +21,7 @@
         </svg>
       </button>
 
-      <div class="pfixed inset-0 bg-white p-4 sm:static sm:inset-auto sm:w-[288px] sm:shadow">
+      <div class="fixed inset-0 bg-white p-4 sm:static sm:inset-auto sm:w-[288px] sm:shadow">
         <h2 class="mb-5 text-center text-2xl font-bold">
           搜尋
         </h2>
