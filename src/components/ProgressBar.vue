@@ -3,6 +3,7 @@
 </template>
 
 <script setup lang="ts">
+import type { Ref } from 'vue'
 import noUiSlider, { type API as Slider } from 'nouislider'
 import 'nouislider/dist/nouislider.min.css'
 
@@ -15,7 +16,7 @@ const props = defineProps<{
 const emit = defineEmits(['change', 'update'])
 
 let slider: Slider
-const sliderRef = ref<HTMLElement>(null!)
+const sliderRef = ref(null!) as Ref<HTMLElement>
 const { isDrag, setDrag } = useProgressbar(props.name)
 
 function mountSlider() {

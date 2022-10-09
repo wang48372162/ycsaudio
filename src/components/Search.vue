@@ -118,6 +118,7 @@
 </template>
 
 <script setup lang="ts">
+import type { Ref } from 'vue'
 import { onKeyDown } from '@vueuse/core'
 
 const route = useRoute()
@@ -127,9 +128,9 @@ const show = ref(false)
 const search = ref('')
 const selectIndex = ref<number | null>(null)
 
-const searchRef = ref<HTMLElement>(null!)
-const searchResultAudiosRefs = ref<HTMLElement[]>([])
-const searchResultListsRefs = ref<HTMLElement[]>([])
+const searchRef = ref(null!) as Ref<HTMLElement>
+const searchResultAudiosRefs = ref([]) as Ref<HTMLElement[]>
+const searchResultListsRefs = ref([]) as Ref<HTMLElement[]>
 
 const result = computed(() => {
   if (!search.value) return

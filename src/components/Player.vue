@@ -39,6 +39,7 @@
 </template>
 
 <script setup lang="ts">
+import type { Ref } from 'vue'
 import { promiseTimeout } from '@vueuse/core'
 import { Repeat } from '@/state'
 
@@ -57,7 +58,7 @@ const emit = defineEmits(['beforeLoad', 'loadedDom', 'loaded', 'error'])
 
 const router = useRouter()
 
-const audioRef = ref<HTMLMediaElement>(null!)
+const audioRef = ref(null!) as Ref<HTMLMediaElement>
 
 const played = ref(false)
 const error = ref(false)
