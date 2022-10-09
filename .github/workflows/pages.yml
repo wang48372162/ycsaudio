@@ -32,8 +32,8 @@ jobs:
 
       - run: yarn
       - run: yarn build
-      - run: echo > dist/.nojekyll
       - run: cp -a dist/. _site/
+      - run: echo > _site/.nojekyll
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
