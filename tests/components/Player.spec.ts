@@ -6,6 +6,10 @@ describe('Player', () => {
     vi.spyOn(window.HTMLMediaElement.prototype, 'play')
       .mockImplementationOnce(() => Promise.resolve())
 
+    vi.mock('vue-router', () => ({
+      useRouter: () => {},
+    }))
+
     const wrapper = shallowMount(Player, {
       propsData: {
         id: 1,

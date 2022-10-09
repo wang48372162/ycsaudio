@@ -31,11 +31,20 @@ jobs:
           cache: 'yarn'
 
       - run: yarn
-      - run: yarn build
+      - run: yarn typecheck
+
+      - name: Lint Code
+        run: yarn lint
+
+      - name: Unit Test
+        run: yarn test:unit
+
+      - name: Build
+        run: yarn build
       - run: cp -a dist/. _site/
       - run: echo > _site/.nojekyll
 
-      - name: Upload artifact
+      - name: Upload Artifact
         uses: actions/upload-pages-artifact@v1
 
   deploy:
