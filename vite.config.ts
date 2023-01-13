@@ -1,6 +1,5 @@
 import { URL, fileURLToPath } from 'url'
 import { defineConfig } from 'vite'
-import { noopDirectiveTransform } from '@vue/compiler-dom'
 import Vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
 import { HeadlessUiResolver } from 'unplugin-vue-components/resolvers'
@@ -24,7 +23,7 @@ export default defineConfig({
       template: {
         compilerOptions: {
           directiveTransforms: {
-            tippy: noopDirectiveTransform,
+            tippy: () => ({ props: [], needRuntime: true }),
           },
         },
       },
