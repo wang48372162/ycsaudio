@@ -19,20 +19,19 @@ export const createApp = ViteSSG(App, {
 })
 
 export function includedRoutes(paths: string[], routes: Readonly<RouteRecordRaw[]>) {
-  return routes
-    .flatMap<string>(route => {
-      if (route.path === '/audio/:audio') {
-        return getAudios().map(({ id }) => `/audio/${id}`)
-      }
+  return routes.flatMap<string>(route => {
+    if (route.path === '/audio/:audio') {
+      return getAudios().map(({ id }) => `/audio/${id}`)
+    }
 
-      if (route.path === '/playlist/:playlist') {
-        return getLists().map(({ id }) => `/playlist/${id}`)
-      }
+    if (route.path === '/playlist/:playlist') {
+      return getLists().map(({ id }) => `/playlist/${id}`)
+    }
 
-      if (route.path === '/:all(.*)*') {
-        return '/404'
-      }
+    if (route.path === '/:all(.*)*') {
+      return '/404'
+    }
 
-      return route.path
-    })
+    return route.path
+  })
 }
