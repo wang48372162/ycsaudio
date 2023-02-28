@@ -1,66 +1,66 @@
 audios:
   - id: 1
-    url: Miyazaki_Hayao/01 世界的約定(霍爾的移動城堡).mp3
+    url: miyazaki-hayao/01 世界的約定(霍爾的移動城堡).mp3
     title: 01 世界的約定(霍爾的移動城堡)
 
   - id: 2
-    url: Miyazaki_Hayao/02 人生的旋轉木馬(霍爾的移動城堡).mp3
+    url: miyazaki-hayao/02 人生的旋轉木馬(霍爾的移動城堡).mp3
     title: 02 人生的旋轉木馬(霍爾的移動城堡)
 
   - id: 3
-    url: Miyazaki_Hayao/03 化成風(貓的報恩).mp3
+    url: miyazaki-hayao/03 化成風(貓的報恩).mp3
     title: 03 化成風(貓的報恩)
 
   - id: 4
-    url: Miyazaki_Hayao/04 總是一次又一次(神隱少女).mp3
+    url: miyazaki-hayao/04 總是一次又一次(神隱少女).mp3
     title: 04 總是一次又一次(神隱少女)
 
   - id: 5
-    url: Miyazaki_Hayao/05 生命之名(神隱少女).mp3
+    url: miyazaki-hayao/05 生命之名(神隱少女).mp3
     title: 05 生命之名(神隱少女)
 
   - id: 6
-    url: Miyazaki_Hayao/06 阿希達卡與珊(魔法公主).mp3
+    url: miyazaki-hayao/06 阿希達卡與珊(魔法公主).mp3
     title: 06 阿希達卡與珊(魔法公主)
 
   - id: 7
-    url: Miyazaki_Hayao/07 魔法公主(魔法公主).mp3
+    url: miyazaki-hayao/07 魔法公主(魔法公主).mp3
     title: 07 魔法公主(魔法公主)
 
   - id: 8
-    url: Miyazaki_Hayao/08 故鄉的街道(清心悅耳 或 心之谷).mp3
+    url: miyazaki-hayao/08 故鄉的街道(清心悅耳 或 心之谷).mp3
     title: 08 故鄉的街道(清心悅耳 或 心之谷)
 
   - id: 9
-    url: Miyazaki_Hayao/09 魯修的口信(魔女宅急便).mp3
+    url: miyazaki-hayao/09 魯修的口信(魔女宅急便).mp3
     title: 09 魯修的口信(魔女宅急便)
 
   - id: 10
-    url: Miyazaki_Hayao/10 好像能恢復元氣了(魔女宅急便).mp3
+    url: miyazaki-hayao/10 好像能恢復元氣了(魔女宅急便).mp3
     title: 10 好像能恢復元氣了(魔女宅急便)
 
   - id: 11
-    url: Miyazaki_Hayao/11 季節的迴轉(魔女宅急便).mp3
+    url: miyazaki-hayao/11 季節的迴轉(魔女宅急便).mp3
     title: 11 季節的迴轉(魔女宅急便)
 
   - id: 12
-    url: Miyazaki_Hayao/12 鄰家的龍貓(龍貓).mp3
+    url: miyazaki-hayao/12 鄰家的龍貓(龍貓).mp3
     title: 12 鄰家的龍貓(龍貓)
 
   - id: 13
-    url: Miyazaki_Hayao/13 散步(龍貓).mp3
+    url: miyazaki-hayao/13 散步(龍貓).mp3
     title: 13 散步(龍貓)
 
   - id: 14
-    url: Miyazaki_Hayao/14 載著你(天空之城).mp3
+    url: miyazaki-hayao/14 載著你(天空之城).mp3
     title: 14 載著你(天空之城)
 
   - id: 15
-    url: Miyazaki_Hayao/15 風之谷的娜烏西卡(風之谷).mp3
+    url: miyazaki-hayao/15 風之谷的娜烏西卡(風之谷).mp3
     title: 15 風之谷的娜烏西卡(風之谷)
 
   - id: 16
-    url: Miyazaki_Hayao/16 娜烏西卡安魂曲(風之谷).mp3
+    url: miyazaki-hayao/16 娜烏西卡安魂曲(風之谷).mp3
     title: 16 娜烏西卡安魂曲(風之谷)
 
   - id: 17
@@ -268,7 +268,7 @@ audios:
     title: 48 光るなら
 
 lists:
-  - id: Miyazaki_Hayao
+  - id: miyazaki-hayao
     name: 宮崎駿
     audios: 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16
 
