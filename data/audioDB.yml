@@ -267,6 +267,70 @@ audios:
     url: song/48 光るなら.mp3
     title: 48 光るなら
 
+  - id: 73
+    url: miyazaki-hayao-kids-chorus/01 風の谷のナウシカ（風の谷のナウシカ）.mp3
+    title: 01 風の谷のナウシカ（風の谷のナウシカ）
+
+  - id: 74
+    url: miyazaki-hayao-kids-chorus/02 めぐる季節（魔女の宅急便）.mp3
+    title: 02 めぐる季節（魔女の宅急便）
+
+  - id: 75
+    url: miyazaki-hayao-kids-chorus/03 風の通り道（となりのトトロ）.mp3
+    title: 03 風の通り道（となりのトトロ）
+
+  - id: 76
+    url: miyazaki-hayao-kids-chorus/04 君をのせて（天空の城ラピュタ）.mp3
+    title: 04 君をのせて（天空の城ラピュタ）
+
+  - id: 77
+    url: miyazaki-hayao-kids-chorus/05 カントリーロード（耳をすませば）.mp3
+    title: 05 カントリーロード（耳をすませば）
+
+  - id: 78
+    url: miyazaki-hayao-kids-chorus/06 崖の上のポニョ（崖の上のポニョ）.mp3
+    title: 06 崖の上のポニョ（崖の上のポニョ）
+
+  - id: 79
+    url: miyazaki-hayao-kids-chorus/07 さんぽ（となりのトトロ）.mp3
+    title: 07 さんぽ（となりのトトロ）
+
+  - id: 80
+    url: miyazaki-hayao-kids-chorus/08 風になる（猫の恩返し）.mp3
+    title: 08 風になる（猫の恩返し）
+
+  - id: 81
+    url: miyazaki-hayao-kids-chorus/09 やさしさに包まれたなら（魔女の宅急便）.mp3
+    title: 09 やさしさに包まれたなら（魔女の宅急便）
+
+  - id: 82
+    url: miyazaki-hayao-kids-chorus/10 となりのトトロ（となりのトトロ）.mp3
+    title: 10 となりのトトロ（となりのトトロ）
+
+  - id: 83
+    url: miyazaki-hayao-kids-chorus/11 もののけ姫（もののけ姫）.mp3
+    title: 11 もののけ姫（もののけ姫）
+
+  - id: 84
+    url: miyazaki-hayao-kids-chorus/12 世界の約束（ハウルの動く城）.mp3
+    title: 12 世界の約束（ハウルの動く城）
+
+  - id: 85
+    url: miyazaki-hayao-kids-chorus/13 テルーの唄（ゲド戦記）.mp3
+    title: 13 テルーの唄（ゲド戦記）
+
+  - id: 86
+    url: miyazaki-hayao-kids-chorus/14 海のおかあさん（崖の上のポニョ）.mp3
+    title: 14 海のおかあさん（崖の上のポニョ）
+
+  - id: 87
+    url: miyazaki-hayao-kids-chorus/15 いつも何度でも（千と千尋の神隠し）.mp3
+    title: 15 いつも何度でも（千と千尋の神隠し）
+
+  - id: 88
+    url: miyazaki-hayao-kids-chorus/16 ナウシカ・レクイエム（風の谷のナウシカ）.mp3
+    title: 16 ナウシカ・レクイエム（風の谷のナウシカ）
+
 lists:
   - id: miyazaki-hayao
     name: 宮崎駿
@@ -279,3 +343,7 @@ lists:
   - id: song-2
     name: 歌曲2
     audios: 37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72
+
+  - id: miyazaki-hayao-kids-chorus
+    name: 宮崎駿-兒童合唱團精選 (ジブリ　ベストソングス～ Kids Chorus~ )
+    audios: 73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88
