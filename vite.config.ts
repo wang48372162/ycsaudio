@@ -9,9 +9,18 @@ import IconsResolver from 'unplugin-icons/resolver'
 import Pages from 'vite-plugin-pages'
 import { HeadlessUiFloatResolver } from '@headlessui-float/vue'
 import Yaml from '@rollup/plugin-yaml'
-import RemoveElTestAttrPlugin from './src/plugins/remove-el-test-attr'
 
-export default defineConfig({
+function removeDataTestAttrs(node: any) {
+  if (node.type === 1 /* NodeTypes.ELEMENT */) {
+    node.props = node.props.filter((prop: any) =>
+      prop.type === 6 /* NodeTypes.ATTRIBUTE */
+        ? prop.name !== 'data-test'
+        : true
+    )
+  }
+}
+
+export default defineConfig(({ command }) => ({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
@@ -22,6 +31,7 @@ export default defineConfig({
     Vue({
       template: {
         compilerOptions: {
+          nodeTransforms: command === 'build' ? [removeDataTestAttrs] : [],
           directiveTransforms: {
             tippy: () => ({ props: [], needRuntime: true }),
           },
@@ -53,7 +63,6 @@ export default defineConfig({
     }),
     Pages(),
     Yaml(),
-    RemoveElTestAttrPlugin(),
   ],
 
   optimizeDeps: {
@@ -78,4 +87,4 @@ export default defineConfig({
     script: 'async',
     formatting: 'minify',
   },
-})
+}))
