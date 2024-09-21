@@ -2,12 +2,10 @@ import { URL, fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
-import { HeadlessUiResolver } from 'unplugin-vue-components/resolvers'
 import AutoImport from 'unplugin-auto-import/vite'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import Pages from 'vite-plugin-pages'
-import { HeadlessUiFloatResolver } from '@headlessui-float/vue'
 import Yaml from '@rollup/plugin-yaml'
 
 function removeDataTestAttrs(node: any) {
@@ -46,8 +44,6 @@ export default defineConfig(({ command }) => ({
     Components({
       resolvers: [
         IconsResolver({ prefix: '' }),
-        HeadlessUiResolver(),
-        HeadlessUiFloatResolver(),
       ],
       dts: 'src/shims/components.d.ts',
     }),
