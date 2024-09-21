@@ -15,7 +15,10 @@ const props = withDefaults(defineProps<{
   step?: number
 }>(), { step: 5 })
 
-const emit = defineEmits(['change', 'changeRealtime'])
+const emit = defineEmits<{
+  change: [progress: number]
+  changeRealtime: [progress: number]
+}>()
 
 const total = 60 * 60
 

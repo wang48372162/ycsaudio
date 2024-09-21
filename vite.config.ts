@@ -1,4 +1,4 @@
-import { URL, fileURLToPath } from 'url'
+import { URL, fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
@@ -21,12 +21,6 @@ function removeDataTestAttrs(node: any) {
 }
 
 export default defineConfig(({ command }) => ({
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-    },
-  },
-
   plugins: [
     Vue({
       template: {
@@ -38,51 +32,34 @@ export default defineConfig(({ command }) => ({
         },
       },
     }),
+    AutoImport({
+      imports: [
+        'vue',
+        {
+          'vue-router': ['onBeforeRouteUpdate', 'useRoute', 'useRouter'],
+          '@vueuse/core': ['onClickOutside', 'useEventListener', 'useLocalStorage', 'useMagicKeys', 'whenever'],
+        },
+      ],
+      dirs: ['src/composables', 'src/logic'],
+      dts: 'src/shims/auto-imports.d.ts',
+    }),
     Components({
       resolvers: [
-        IconsResolver({
-          prefix: '',
-        }),
+        IconsResolver({ prefix: '' }),
         HeadlessUiResolver(),
         HeadlessUiFloatResolver(),
       ],
       dts: 'src/shims/components.d.ts',
     }),
-    AutoImport({
-      dirs: ['src/composables', 'src/logic'],
-      imports: [
-        'vue',
-        'vue-router',
-        '@vueuse/core',
-      ],
-      dts: 'src/shims/auto-imports.d.ts',
-      eslintrc: { enabled: true },
-    }),
-    Icons({
-      autoInstall: true,
-    }),
     Pages(),
+    Icons(),
     Yaml(),
   ],
-
-  optimizeDeps: {
-    include: [
-      'vue',
-      'vue-router',
-      'vue-tippy',
-      'nprogress',
-      'nouislider',
-      '@vueuse/core',
-      '@headlessui/vue',
-      '@headlessui-float/vue',
-    ],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
   },
-
-  test: {
-    globals: true,
-    environment: 'jsdom',
-  },
-
   ssgOptions: {
     script: 'async',
     formatting: 'minify',

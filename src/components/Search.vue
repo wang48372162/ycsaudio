@@ -52,7 +52,6 @@
 
         <div
           v-if="result"
-          ref="searchResult"
           class="-mx-4 mt-4 -mb-4 max-h-[400px] overflow-y-auto"
         >
           <template v-if="result.audios.length">

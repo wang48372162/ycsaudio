@@ -4,12 +4,12 @@ import Playlist from '@/components/Playlist.vue'
 
 describe('Playlist', () => {
   beforeAll(() => {
-    config.renderStubDefaultSlot = true
+    config.global.renderStubDefaultSlot = true
     mockAudioDB()
   })
 
   afterAll(() => {
-    config.renderStubDefaultSlot = false
+    config.global.renderStubDefaultSlot = false
   })
 
   it('mounted playlist', () => {

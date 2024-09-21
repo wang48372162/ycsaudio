@@ -54,7 +54,12 @@ const props = withDefaults(defineProps<{
   listId: '',
 })
 
-const emit = defineEmits(['beforeLoad', 'loadedDom', 'loaded', 'error'])
+const emit = defineEmits<{
+  beforeLoad: []
+  loadedDom: [audio: HTMLMediaElement]
+  loaded: []
+  error: []
+}>()
 
 const router = useRouter()
 

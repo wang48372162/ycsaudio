@@ -13,7 +13,10 @@ const props = defineProps<{
   total: number
 }>()
 
-const emit = defineEmits(['change', 'update'])
+const emit = defineEmits<{
+  change: [value: number]
+  update: [value: number]
+}>()
 
 let slider: Slider
 const sliderRef = ref(null!) as Ref<HTMLElement>
@@ -32,14 +35,14 @@ function mountSlider() {
     keyboardSupport: false,
   })
 
-  slider.on('change', (values, handle) => {
+  slider.on('change', (values, _handle) => {
     if (!props.total) return
-    emit('change', parseFloat(`${values[0]}`))
+    emit('change', Number.parseFloat(`${values[0]}`))
   })
 
-  slider.on('update', (values, handle) => {
+  slider.on('update', (values, _handle) => {
     if (!props.total) return
-    emit('update', parseFloat(`${values[0]}`))
+    emit('update', Number.parseFloat(`${values[0]}`))
   })
 
   listenTouchEvents()

@@ -14,7 +14,9 @@ export function usePageTitle(newTitle: string | Ref<string>, options: UsePageTit
   } = options
 
   if (isUpdate) {
-    useTitle(newTitle, { titleTemplate })
+    useTitle(newTitle, {
+      titleTemplate,
+    })
   } else {
     useHead({
       title: newTitle,

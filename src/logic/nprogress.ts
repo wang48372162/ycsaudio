@@ -2,7 +2,7 @@ import type { RouteLocationNormalized } from 'vue-router'
 import NProgress, { type NProgress as NProgressType } from 'nprogress'
 
 export const nprogress = NProgress as NProgressType & {
-  disableLoadedPageDone(route: RouteLocationNormalized): void
+  disableLoadedPageDone: (route: RouteLocationNormalized) => void
 }
 
 export function loadStart() {

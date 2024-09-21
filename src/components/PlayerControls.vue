@@ -51,7 +51,6 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeRouteUpdate } from 'vue-router'
 import { Repeat } from '@/state'
 
 const props = withDefaults(defineProps<{
@@ -68,7 +67,11 @@ const props = withDefaults(defineProps<{
   error: false,
 })
 
-const emit = defineEmits(['play', 'stop', 'updateRepeat'])
+const emit = defineEmits<{
+  play: []
+  stop: []
+  updateRepeat: [status: Repeat]
+}>()
 
 function useRepeat(initialValue = Repeat.None) {
   const repeatStatus = ref(initialValue)

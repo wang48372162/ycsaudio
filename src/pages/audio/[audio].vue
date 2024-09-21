@@ -32,7 +32,7 @@ function visit(route: RouteLocationNormalized, isUpdate = false) {
 
 visit(route)
 
-onBeforeRouteUpdate((to, from) => {
+onBeforeRouteUpdate((to, _from) => {
   visit(to, true)
 })
 </script>

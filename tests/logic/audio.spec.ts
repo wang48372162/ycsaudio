@@ -11,7 +11,7 @@ describe('logic audio', () => {
     const expected = {
       id: 1,
       url: 'https://example.com/01.mp3',
-      title: 'Audio 01'
+      title: 'Audio 01',
     }
     expect(audioData).toEqual(expected)
   })
@@ -22,18 +22,18 @@ describe('logic audio', () => {
       {
         id: 1,
         title: 'Audio 01',
-        url: 'https://example.com/01.mp3'
+        url: 'https://example.com/01.mp3',
       },
       {
         id: 2,
         title: 'Audio 02',
-        url: 'https://example.com/02.mp3'
+        url: 'https://example.com/02.mp3',
       },
       {
         id: 3,
         title: 'Audio 03',
-        url: 'https://example.com/03.mp3'
-      }
+        url: 'https://example.com/03.mp3',
+      },
     ]
     expect(audiosData).toEqual(expected)
   })
@@ -43,7 +43,7 @@ describe('logic audio', () => {
     const expected = {
       id: 'song',
       name: '歌曲',
-      audios: [1, 2, 3]
+      audios: [1, 2, 3],
     }
     expect(listData).toEqual(expected)
   })
@@ -53,7 +53,7 @@ describe('logic audio', () => {
     const expected = {
       id: 'song-2',
       name: '歌曲2',
-      audios: [1, 3]
+      audios: [1, 3],
     }
     expect(listData).toEqual(expected)
   })
@@ -69,13 +69,13 @@ describe('logic audio', () => {
       {
         id: 'song',
         name: '歌曲',
-        audios: [1, 2, 3]
+        audios: [1, 2, 3],
       },
       {
         id: 'song-2',
         name: '歌曲2',
-        audios: [1, 3]
-      }
+        audios: [1, 3],
+      },
     ]
     expect(listsData).toEqual(expected)
   })

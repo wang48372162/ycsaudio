@@ -17,7 +17,7 @@ const duration = computed(() => formatTime(props.duration))
 const currentTime = computed(() => formatTime(props.currentTime))
 
 function formatTime(duration: number) {
-  if (isNaN(duration)) duration = 0
+  if (Number.isNaN(duration)) duration = 0
 
   const s = Math.floor(duration % 60).toString().padStart(2, '0')
   const m = Math.floor((duration / 60) % 60).toString().padStart(2, '0')

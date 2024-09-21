@@ -15,8 +15,8 @@ describe('PlayerTime', () => {
   it('set NaN duration', () => {
     const wrapper = shallowMount(PlayerTime, {
       propsData: {
-        duration: undefined,
-        currentTime: undefined,
+        duration: Number.NaN,
+        currentTime: Number.NaN,
       },
     })
     expect(wrapper.html()).toBe('<div class="select-none">00:00 / 00:00</div>')

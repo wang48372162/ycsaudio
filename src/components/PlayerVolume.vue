@@ -40,7 +40,10 @@ const props = withDefaults(defineProps<{
   step: 10,
 })
 
-const emit = defineEmits(['change', 'muted'])
+const emit = defineEmits<{
+  change: [volume: number]
+  muted: [muted: boolean]
+}>()
 
 const total = 100
 
