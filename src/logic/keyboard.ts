@@ -1,11 +1,16 @@
-import { watch } from 'vue'
-import type { WatchCallback, WatchOptions, WatchSource } from 'vue'
+import { onKeyDown } from '@vueuse/core'
+import type { KeyFilter, OnKeyStrokeOptions } from '@vueuse/core'
 import { showSearchBox } from '@/state'
 
-export function wheneverOnSearchBoxClosed<T>(source: WatchSource<T | false | null | undefined>, cb: WatchCallback<T>, options?: WatchOptions) {
-  return watch(source, (v, ov, onInvalidate) => {
-    if (v && !showSearchBox.value) {
-      cb(v, ov, onInvalidate)
+export function onKeyDownWhenSearchBoxClosed(
+  key: KeyFilter,
+  handler: (event: KeyboardEvent) => void,
+  options?: Omit<OnKeyStrokeOptions, 'eventName'>,
+) {
+  onKeyDown(key, e => {
+    if (!showSearchBox.value) {
+      e.preventDefault()
+      handler(e)
     }
   }, options)
 }

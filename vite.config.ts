@@ -33,7 +33,7 @@ export default defineConfig(({ command }) => ({
         'vue',
         {
           'vue-router': ['onBeforeRouteUpdate', 'useRoute', 'useRouter'],
-          '@vueuse/core': ['onClickOutside', 'useEventListener', 'useLocalStorage', 'useMagicKeys', 'whenever'],
+          '@vueuse/core': ['onClickOutside', 'useEventListener', 'useLocalStorage', 'whenever'],
         },
       ],
       dirs: ['src/composables', 'src/logic'],

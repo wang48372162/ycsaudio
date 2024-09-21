@@ -45,8 +45,6 @@ function changeRealtimeProgress(value: number) {
   emit('changeRealtime', Math.floor((value / total) * props.duration))
 }
 
-const { ArrowLeft, ArrowRight } = useMagicKeys()
-
-wheneverOnSearchBoxClosed(ArrowLeft, backward)
-wheneverOnSearchBoxClosed(ArrowRight, forward)
+onKeyDownWhenSearchBoxClosed('ArrowLeft', backward)
+onKeyDownWhenSearchBoxClosed('ArrowRight', forward)
 </script>

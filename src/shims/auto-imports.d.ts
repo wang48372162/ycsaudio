@@ -41,6 +41,7 @@ declare global {
   const onClickOutside: typeof import('@vueuse/core')['onClickOutside']
   const onDeactivated: typeof import('vue')['onDeactivated']
   const onErrorCaptured: typeof import('vue')['onErrorCaptured']
+  const onKeyDownWhenSearchBoxClosed: typeof import('../logic/keyboard')['onKeyDownWhenSearchBoxClosed']
   const onMounted: typeof import('vue')['onMounted']
   const onRenderTracked: typeof import('vue')['onRenderTracked']
   const onRenderTriggered: typeof import('vue')['onRenderTriggered']
@@ -71,7 +72,6 @@ declare global {
   const useEventListener: typeof import('@vueuse/core')['useEventListener']
   const useId: typeof import('vue')['useId']
   const useLocalStorage: typeof import('@vueuse/core')['useLocalStorage']
-  const useMagicKeys: typeof import('@vueuse/core')['useMagicKeys']
   const useModel: typeof import('vue')['useModel']
   const usePageTitle: typeof import('../composables/usePageTitle')['usePageTitle']
   const usePlaylist: typeof import('../composables/useAudio')['usePlaylist']
@@ -85,7 +85,6 @@ declare global {
   const watchPostEffect: typeof import('vue')['watchPostEffect']
   const watchSyncEffect: typeof import('vue')['watchSyncEffect']
   const whenever: typeof import('@vueuse/core')['whenever']
-  const wheneverOnSearchBoxClosed: typeof import('../logic/keyboard')['wheneverOnSearchBoxClosed']
 }
 // for type re-export
 declare global {

@@ -84,16 +84,7 @@ function changeMuted(value: boolean) {
   emit('muted', value)
 }
 
-const { ArrowUp, ArrowDown, M } = useMagicKeys({
-  passive: false,
-  onEventFired(e) {
-    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-      e.preventDefault()
-    }
-  },
-})
-
-wheneverOnSearchBoxClosed(ArrowUp, volumeUp)
-wheneverOnSearchBoxClosed(ArrowDown, volumeDown)
-wheneverOnSearchBoxClosed(M, mute)
+onKeyDownWhenSearchBoxClosed('ArrowUp', volumeUp)
+onKeyDownWhenSearchBoxClosed('ArrowDown', volumeDown)
+onKeyDownWhenSearchBoxClosed(['M', 'm'], mute)
 </script>

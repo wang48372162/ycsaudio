@@ -3,7 +3,7 @@
     <button
       type="button"
       class="p-1"
-      title="搜尋 (Enter)"
+      title="搜尋 (/)"
       @click="showSearchBox = true"
     >
       <svg
@@ -20,101 +20,104 @@
       </svg>
     </button>
 
-    <div
-      v-if="showSearchBox"
-      ref="searchBoxRef"
-      class="fixed inset-0 z-10 flex flex-col bg-white p-4 sm:absolute sm:inset-auto sm:right-0 sm:w-[288px] sm:mt-2 sm:shadow"
-    >
-      <h2 class="mb-5 text-center text-2xl font-bold">
-        搜尋
-      </h2>
-      <input
-        ref="searchRef"
-        v-model="search"
-        class="search-input w-full rounded-sm border border-gray-600 px-2 py-1 focus:outline-none focus:ring-1 focus:ring-gray-600"
-        type="text"
-        placeholder="搜尋..."
-        @keydown.prevent.down="searchKeydown"
-        @keydown.prevent.up="searchKeyup"
-        @keydown.enter="searchEnter"
-      >
-
-      <button
-        type="button"
-        class="absolute top-4 right-4 sm:hidden"
-        title="關閉 (Escape)"
-        @click="showSearchBox = false"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
-          <path
-            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-          />
-          <path d="M0 0h24v24H0z" fill="none" />
-        </svg>
-      </button>
-
+    <ClientOnly>
       <div
-        v-if="result"
-        class="-mx-4 mt-4 -mb-4 flex-1 grow overflow-y-auto sm:max-h-[400px] sm:grow-0"
+        v-if="showSearchBox"
+        ref="searchBoxRef"
+        class="fixed inset-0 z-10 flex flex-col bg-white p-4 sm:absolute sm:inset-auto sm:right-0 sm:w-[288px] sm:mt-2 sm:shadow"
       >
-        <template v-if="result.audios.length">
-          <h3 class="px-4 pb-2 text-xl font-bold">
-            歌曲：
-          </h3>
-          <ul class="mb-2">
-            <li
-              v-for="(audio, i) in result.audios"
-              :key="audio.id"
-              :ref="el => searchResultAudiosRefs[i] = el as HTMLElement"
-            >
-              <RouterLink
-                :to="audioTo(audio.id)"
-                class="block px-4 py-2"
-                :class="i === selectAudioIndex ? 'bg-black text-white' : 'hover:bg-gray-100'"
-                @click="onClickLink"
+        <h2 class="mb-5 text-center text-2xl font-bold">
+          搜尋
+        </h2>
+
+        <input
+          ref="searchRef"
+          v-model="search"
+          class="search-input w-full rounded-sm border border-gray-600 px-2 py-1 focus:outline-none focus:ring-1 focus:ring-gray-600"
+          type="text"
+          placeholder="搜尋..."
+          @keydown.prevent.down="searchKeydown"
+          @keydown.prevent.up="searchKeyup"
+          @keydown.enter="searchEnter"
+        >
+
+        <button
+          type="button"
+          class="absolute top-4 right-4 sm:hidden"
+          title="關閉 (Escape)"
+          @click="showSearchBox = false"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+            <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+            />
+            <path d="M0 0h24v24H0z" fill="none" />
+          </svg>
+        </button>
+
+        <div
+          v-if="result && search"
+          class="-mx-4 mt-4 -mb-4 flex-1 grow overflow-y-auto sm:max-h-[400px] sm:grow-0"
+        >
+          <template v-if="result.audios.length">
+            <h3 class="px-4 pb-2 text-xl font-bold">
+              歌曲：
+            </h3>
+            <ul class="mb-2">
+              <li
+                v-for="(audio, i) in result.audios"
+                :key="audio.id"
+                :ref="el => searchResultAudiosRefs[i] = (el as HTMLElement)"
               >
-                {{ audio.title }}
                 <RouterLink
-                  v-if="currentList && audioListTo(audio.id)"
-                  :to="audioTo(audio.id, true)"
-                  class="whitespace-nowrap rounded px-1 text-sm"
-                  :class="i === selectAudioIndex ? 'bg-white text-black' : 'bg-black text-white'"
+                  :to="audioTo(audio.id)"
+                  class="block px-4 py-2"
+                  :class="i === selectedAudioIndex ? 'bg-black text-white' : 'hover:bg-gray-100'"
                   @click="onClickLink"
                 >
-                  {{ currentList.name }}
+                  {{ audio.title }}
+                  <RouterLink
+                    v-if="currentList && audioListTo(audio.id)"
+                    :to="audioTo(audio.id, true)"
+                    class="whitespace-nowrap rounded px-1 text-sm"
+                    :class="i === selectedAudioIndex ? 'bg-white text-black' : 'bg-black text-white'"
+                    @click="onClickLink"
+                  >
+                    {{ currentList.name }}
+                  </RouterLink>
                 </RouterLink>
-              </RouterLink>
-            </li>
-          </ul>
-        </template>
+              </li>
+            </ul>
+          </template>
 
-        <template v-if="result.lists.length">
-          <h3 class="px-4 pb-2 text-xl font-bold">
-            播放清單：
-          </h3>
-          <ul class="mb-2">
-            <li
-              v-for="(list, i) in result.lists"
-              :key="list.id"
-              :ref="el => searchResultListsRefs[i] = el as HTMLElement"
-            >
-              <RouterLink
-                :to="listTo(list.id)"
-                class="block px-4 py-2"
-                :class="i === selectListIndex ? 'bg-black text-white' : 'hover:bg-gray-100'"
-                @click="onClickLink"
+          <template v-if="result.lists.length">
+            <h3 class="px-4 pb-2 text-xl font-bold">
+              播放清單：
+            </h3>
+            <ul class="mb-2">
+              <li
+                v-for="(list, i) in result.lists"
+                :key="list.id"
+                :ref="el => searchResultListsRefs[i] = (el as HTMLElement)"
               >
-                {{ list.name }}
-              </RouterLink>
-            </li>
-          </ul>
-        </template>
+                <RouterLink
+                  :to="listTo(list.id)"
+                  class="block px-4 py-2"
+                  :class="i === selectedListIndex ? 'bg-black text-white' : 'hover:bg-gray-100'"
+                  @click="onClickLink"
+                >
+                  {{ list.name }}
+                </RouterLink>
+              </li>
+            </ul>
+          </template>
 
-        <div v-if="resultEmpty" class="px-4 py-2 text-center text-gray-400">
-          搜尋不到任何歌曲或播放清單...
+          <div v-if="resultEmpty" class="px-4 py-2 text-center text-gray-400">
+            搜尋不到任何歌曲或播放清單...
+          </div>
         </div>
       </div>
-    </div>
+    </ClientOnly>
   </div>
 </template>
 
@@ -134,53 +137,49 @@ const searchBoxRef = ref(null!) as Ref<HTMLElement>
 const searchResultAudiosRefs = ref([]) as Ref<HTMLElement[]>
 const searchResultListsRefs = ref([]) as Ref<HTMLElement[]>
 
-const result = computed(() => {
-  if (!search.value) return
-
-  const audios = getAudios().filter(audio => searchText(search.value, audio.title))
-  const lists = getLists().filter(list => searchText(search.value, list.name))
-  return { audios, lists }
-})
+const result = computed(() => ({
+  audios: search.value
+    ? getAudios().filter(audio => searchText(search.value, audio.title))
+    : [],
+  lists: search.value
+    ? getLists().filter(list => searchText(search.value, list.name))
+    : [],
+}))
 
 const resultEmpty = computed(() => {
-  if (!result.value) return true
   return !result.value.audios.length && !result.value.lists.length
 })
 
-const selectAudioIndex = computed(() => {
-  if (!result.value) return null
+const selectedAudioIndex = computed(() => {
   if (selectIndex.value === null) return null
   if (selectIndex.value >= result.value.audios.length) return null
   return selectIndex.value
 })
 
-const selectAudio = computed(() => {
-  if (!result.value) return null
-  if (selectAudioIndex.value === null) return null
-  return result.value.audios[selectAudioIndex.value]
+const selectedAudio = computed(() => {
+  if (selectedAudioIndex.value === null) return null
+  return result.value.audios[selectedAudioIndex.value]
 })
 
-const selectAudioEl = computed(() => {
-  if (selectAudioIndex.value === null) return null
-  return searchResultAudiosRefs.value[selectAudioIndex.value]
+const selectedAudioEl = computed(() => {
+  if (selectedAudioIndex.value === null) return null
+  return searchResultAudiosRefs.value[selectedAudioIndex.value]
 })
 
-const selectListIndex = computed(() => {
-  if (!result.value) return null
+const selectedListIndex = computed(() => {
   if (selectIndex.value === null) return null
   if (selectIndex.value < result.value.audios.length) return null
   return selectIndex.value - result.value.audios.length
 })
 
-const selectList = computed(() => {
-  if (!result.value) return null
-  if (selectListIndex.value === null) return null
-  return result.value.lists[selectListIndex.value]
+const selectedList = computed(() => {
+  if (selectedListIndex.value === null) return null
+  return result.value.lists[selectedListIndex.value]
 })
 
-const selectListEl = computed(() => {
-  if (selectListIndex.value === null) return null
-  return searchResultListsRefs.value[selectListIndex.value]
+const selectedListEl = computed(() => {
+  if (selectedListIndex.value === null) return null
+  return searchResultListsRefs.value[selectedListIndex.value]
 })
 
 const queryListId = computed(() =>
@@ -189,28 +188,21 @@ const queryListId = computed(() =>
     : (route.query?.list as string | null)
 )
 
-const currentList = computed(() => (queryListId.value ? getList(queryListId.value) : null))
-
-const selectLinkRoute = computed(() => {
-  if (!result.value) {
-    return null
-  } else if (selectAudio.value) {
-    return audioTo(selectAudio.value.id)
-  } else if (selectList.value) {
-    return listTo(selectList.value.id)
-  }
-  return null
-})
+const currentList = computed(() =>
+  queryListId.value
+    ? getList(queryListId.value)
+    : null
+)
 
 function searchText(key: string, text: string) {
   return text.toLowerCase().includes(key.toLowerCase())
 }
 
 function selectScrollIntoView() {
-  if (selectAudioEl.value) {
-    selectAudioEl.value.scrollIntoView({ block: 'nearest' })
-  } else if (selectListEl.value) {
-    selectListEl.value.scrollIntoView({ block: 'nearest' })
+  if (selectedAudioEl.value) {
+    selectedAudioEl.value.scrollIntoView({ block: 'nearest' })
+  } else if (selectedListEl.value) {
+    selectedListEl.value.scrollIntoView({ block: 'nearest' })
   }
 }
 
@@ -241,7 +233,12 @@ function onClickLink() {
 }
 
 function searchEnter() {
-  const targetRoute = selectLinkRoute.value
+  let targetRoute = null
+  if (selectedAudio.value) {
+    targetRoute = audioTo(selectedAudio.value.id, true)
+  } else if (selectedList.value) {
+    targetRoute = listTo(selectedList.value.id)
+  }
   if (selectIndex.value !== null && targetRoute) {
     onClickLink()
     router.push(targetRoute)
@@ -249,11 +246,9 @@ function searchEnter() {
 }
 
 function searchKeydown() {
-  if (!result.value) {
-    return null
-  }
-
   const resultsLength = result.value.audios.length + result.value.lists.length
+  if (resultsLength === 0) return
+
   if (selectIndex.value === null) {
     selectIndex.value = 0
   } else if (selectIndex.value < resultsLength - 1) {
@@ -264,9 +259,7 @@ function searchKeydown() {
 }
 
 function searchKeyup() {
-  if (!result.value || selectIndex.value === null) {
-    return null
-  }
+  if (selectIndex.value === null) return
 
   if (selectIndex.value > 0) {
     selectIndex.value--
@@ -279,9 +272,10 @@ onClickOutside(searchBoxRef, () => {
   showSearchBox.value = false
 })
 
-whenever(showSearchBox, () => {
+whenever(showSearchBox, async () => {
+  await nextTick()
   searchRef.value?.focus()
-}, { flush: 'post' })
+})
 
 watch(search, search => {
   if (search === '' || search === null || !result.value) {
@@ -300,8 +294,9 @@ onKeyDown('Escape', () => {
   showSearchBox.value = false
 })
 
-onKeyDown('Enter', e => {
-  if (!(e.target as Element).matches('.search-input')) {
+onKeyDown('/', e => {
+  if (!showSearchBox.value) {
+    e.preventDefault()
     showSearchBox.value = true
   }
 })
