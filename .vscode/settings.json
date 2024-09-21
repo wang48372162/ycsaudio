@@ -1,8 +1,5 @@
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
-  "volar.icon.preview": false,
-  "volar.icon.splitEditors": false,
-  "volar.codeLens.references": false
+    "source.fixAll.eslint": "explicit"
+  }
 }
