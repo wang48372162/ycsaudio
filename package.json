@@ -9,7 +9,8 @@
     "preview": "vite preview --port=5050",
     "type-check": "vue-tsc --build --force",
     "lint": "eslint .",
-    "test": "vitest"
+    "test": "vitest",
+    "test:ui": "vitest --ui"
   },
   "dependencies": {
     "@unhead/vue": "^1.11.6",
@@ -27,6 +28,7 @@
     "@types/jsdom": "^21.1.7",
     "@types/nprogress": "^0.2.3",
     "@vitejs/plugin-vue": "^5.1.4",
+    "@vitest/ui": "^2.1.1",
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.5.1",
     "@ycs77/eslint-config": "^2.4.2",
