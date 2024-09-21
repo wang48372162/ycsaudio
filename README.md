@@ -24,16 +24,7 @@ yarn build
 執行單元測試：
 
 ```sh
-yarn test:unit
-```
-
-執行 E2E 測試：
-
-```sh
-yarn build
-yarn test:e2e
-# 或 headless 模式
-yarn test:e2e:ci
+yarn test
 ```
 
 格式化：
