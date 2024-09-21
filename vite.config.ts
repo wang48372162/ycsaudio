@@ -3,8 +3,6 @@ import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
-import Icons from 'unplugin-icons/vite'
-import IconsResolver from 'unplugin-icons/resolver'
 import Pages from 'vite-plugin-pages'
 import Yaml from '@rollup/plugin-yaml'
 
@@ -42,13 +40,9 @@ export default defineConfig(({ command }) => ({
       dts: 'src/shims/auto-imports.d.ts',
     }),
     Components({
-      resolvers: [
-        IconsResolver({ prefix: '' }),
-      ],
       dts: 'src/shims/components.d.ts',
     }),
     Pages(),
-    Icons(),
     Yaml(),
   ],
   resolve: {
