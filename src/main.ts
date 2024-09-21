@@ -4,8 +4,6 @@ import routes from '~pages'
 import App from '@/App.vue'
 import { getAudios, getLists } from '@/logic/audio'
 import type { UserModule } from '@/types'
-import 'nprogress/nprogress.css'
-import 'tippy.js/dist/tippy.css'
 import './styles/index.css'
 
 export const createApp = ViteSSG(App, {

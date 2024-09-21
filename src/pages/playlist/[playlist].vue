@@ -5,21 +5,22 @@
 </template>
 
 <script setup lang="ts">
-import { type RouteLocationNormalized, onBeforeRouteUpdate } from 'vue-router'
+import type { RouteLocationNormalized } from 'vue-router'
 
 const route = useRoute()
 const { list, fetchListData } = usePlaylist()
 
-function visit(route: RouteLocationNormalized, isUpdate = false) {
+usePageTitle(() => list.title)
+
+function visit(route: RouteLocationNormalized) {
   fetchListData(route.params.playlist as string)
 
-  usePageTitle(list.title, { isUpdate })
   scrollToTop()
 }
 
 visit(route)
 
 onBeforeRouteUpdate((to, _from) => {
-  visit(to, true)
+  visit(to)
 })
 </script>

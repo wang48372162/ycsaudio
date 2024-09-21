@@ -1,26 +1,17 @@
-import type { Ref } from 'vue'
-import { useTitle } from '@vueuse/core'
-import { useHead } from '@vueuse/head'
+import { useHead } from '@unhead/vue'
+import type { MaybeComputedRef } from '@unhead/vue'
 
 interface UsePageTitleOptions {
   titleTemplate?: string
-  isUpdate?: boolean
 }
 
-export function usePageTitle(newTitle: string | Ref<string>, options: UsePageTitleOptions = {}) {
+export function usePageTitle(title: MaybeComputedRef<string>, options: UsePageTitleOptions = {}) {
   const {
     titleTemplate = '%s - ycsAudio',
-    isUpdate = false,
   } = options
 
-  if (isUpdate) {
-    useTitle(newTitle, {
-      titleTemplate,
-    })
-  } else {
-    useHead({
-      title: newTitle,
-      titleTemplate,
-    })
-  }
+  useHead({
+    title,
+    titleTemplate,
+  })
 }

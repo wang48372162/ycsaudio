@@ -821,7 +821,7 @@
     "@unhead/schema" "1.11.6"
     "@unhead/shared" "1.11.6"
 
-"@unhead/vue@^1.7.0", "@unhead/vue@^1.9.15":
+"@unhead/vue@^1.11.6", "@unhead/vue@^1.7.0", "@unhead/vue@^1.9.15":
   version "1.11.6"
   resolved "https://registry.yarnpkg.com/@unhead/vue/-/vue-1.11.6.tgz#dd9b117777f3be93b39a9cf50099a7b7b2ae7a94"
   integrity sha512-CMuDJGTi4n4wKdOp6/JmB9roGshjTdoFKF34PEkXu4+g97BiVFiZ9LvgY44+UlWCUzQHcqEPRQIzm9iKEqcfKw==

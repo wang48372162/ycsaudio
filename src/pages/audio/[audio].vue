@@ -12,27 +12,27 @@
 </template>
 
 <script setup lang="ts">
-import { type RouteLocationNormalized, onBeforeRouteUpdate } from 'vue-router'
+import type { RouteLocationNormalized } from 'vue-router'
 import { loadEnd, loadStart } from '@/logic/nprogress'
 
 const route = useRoute()
-
 const { audio, fetchAudioData } = useAudio()
 const { list, fetchListData } = usePlaylist()
 
-function visit(route: RouteLocationNormalized, isUpdate = false) {
+usePageTitle(() => audio.title)
+
+function visit(route: RouteLocationNormalized) {
   disableLoadedPageDone(route)
 
   fetchAudioData(route.params.audio as string)
   fetchListData(route.query.list as string)
 
-  usePageTitle(audio.title, { isUpdate })
   scrollToTop()
 }
 
 visit(route)
 
 onBeforeRouteUpdate((to, _from) => {
-  visit(to, true)
+  visit(to)
 })
 </script>

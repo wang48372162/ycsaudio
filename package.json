@@ -14,6 +14,7 @@
   "dependencies": {
     "@headlessui-float/vue": "^0.15.0",
     "@headlessui/vue": "^1.7.23",
+    "@unhead/vue": "^1.11.6",
     "@vueuse/core": "^11.0.0",
     "@vueuse/head": "^2.0.0",
     "nouislider": "^15.8.1",
